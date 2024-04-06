@@ -2,6 +2,8 @@ from pyrogram import Client, filters
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
 
+from .help import *
+
 @Client.on_message(filters.command("banall", cmd) & filters.me)
 async def banall(client, message):
     if not message.from_user:
