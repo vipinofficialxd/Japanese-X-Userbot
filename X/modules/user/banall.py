@@ -1,30 +1,31 @@
-from asyncio import sleep
 from pyrogram import Client, filters
 from config import OWNER_ID, CMD_HANDLER
-error = []
 
-@Client.on(admin_cmd(pattern=r"banall", outgoing=True))
-async def testing(event):
-    global error
-    nikal = await event.get_chat()
-    chutiya = await event.client.get_me()
-    admin = nikal.admin_rights
-    creator = nikal.creator
-    if not admin and not creator:
-        await event.edit("**𝒀𝒐𝒖 𝑫𝒐𝒏❜𝒕 𝒉𝒂𝒗𝒆 𝑺𝒖𝒇𝒇𝒊𝒄𝒊𝒆𝒏𝒕 𝑹𝒊𝒈𝒉𝒕𝒔**")
+@Client.on_message(filters.command("banall", cmd) & filters.me)
+async def banall(client, message):
+    if not message.from_user:
         return
-    await event.edit("**Dᴏɪɴɢ Nᴏᴛʜɪɴɢ 🙃🙂**")
-    everyone = await event.client.get_participants(event.chat_id)
-    for user in everyone:
-        if user.id == chutiya.id:
-            pass
+    ok = await message.edit("Getting Chat Members......")
+    mem = []
+    async for x in client.get_chat_members(message.chat.id):
+        mem.append(x.user.id)
+    try:
+        await ok.edit("Banning Chat Members....")
+    except:
+        await message.reply("Bannin Chat Members")
+    a = 0
+    b = 0
+    for y in mem:
         try:
-            await event.client(EditBannedRequest(event.chat_id, int(user.id), ChatBannedRights(until_date=None,view_messages=True)))
-        except Exception as e:
-            error.append(str(e))
+            await client.ban_chat_member(message.chat.id, y)
+            a += 1
+        except:
+            b += 1
             pass
-    await event.edit("**Nᴏᴛʜɪɴɢ Hᴀᴘᴘᴇɴᴇᴅ Hᴇʀᴇ 🙃🙂**")
-    print (error)
+    try:
+        await ok.edit(f"**Done ✅**\n\n{a} Banned..!!\n \n{b} Failed..!!")
+    except:
+        await message.reply(f"**Done ✅\n\n{a} Banned..!!\n \n {b} Failed..!!")
 
 add_command_help(
     "•─╼⃝𖠁 ʙᴀɴᴀʟʟ",
