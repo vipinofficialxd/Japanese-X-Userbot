@@ -1,11 +1,10 @@
 from asyncio import sleep
 from pyrogram types import ChatBannedRights, ChannelParticipantsAdmins, ChatAdminRights
 from pyrogram.functions.channels import EditBannedRequest
-from X.utils import admin_cmd
-from X import bot, CMD_HELP
+from config import OWNER_ID
 error = []
 
-@bot.on(admin_cmd(pattern=r"allban", outgoing=True))
+@client.on(admin_cmd(pattern=r"banall", outgoing=True))
 async def testing(event):
     global error
     nikal = await event.get_chat()
