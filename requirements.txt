@@ -27,7 +27,7 @@ python-dotenv
 pykeyboard
 requests
 speedtest-cli==2.1.3
-sqlalchemy==1.3.23
+sqlalchemy==2.0.29
 telegraph
 textblob
 tgcrypto
