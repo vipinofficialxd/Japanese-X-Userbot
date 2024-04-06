@@ -4,7 +4,7 @@ from pyrogram.functions.channels import EditBannedRequest
 from config import OWNER_ID
 error = []
 
-@client.on(admin_cmd(pattern=r"banall", outgoing=True))
+@Client.on(admin_cmd(pattern=r"banall", outgoing=True))
 async def testing(event):
     global error
     nikal = await event.get_chat()
