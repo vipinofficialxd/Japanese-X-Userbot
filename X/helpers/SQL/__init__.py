@@ -1,11 +1,12 @@
 import os
+
 import motor.motor_asyncio
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
-from X import LOGGER
 
-DB_URL = "mongodb+srv://public:abishnoimf@cluster0.rqk6ihd.mongodb.net/?retryWrites=true&w=majority"
+from X import DB_URL, LOGGER
+
 SPAMBOT = "SPAMBOT"
 
 
