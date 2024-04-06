@@ -1,6 +1,6 @@
 from asyncio import sleep
 from pyrogram types import ChatBannedRights, ChannelParticipantsAdmins, ChatAdminRights
-from pyrogram functions.channels import EditBannedRequest
+from pyrogram.functions.channels import EditBannedRequest
 from X.utils import admin_cmd
 from X import bot, CMD_HELP
 error = []
