@@ -13,7 +13,7 @@ async def banall(client, message):
     try:
         await ok.edit("Banning Chat Members....")
     except:
-        await message.reply("Bannin Chat Members")
+        await message.reply("Banning Chat Members")
     a = 0
     b = 0
     for y in mem:
