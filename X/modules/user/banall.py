@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from config import OWNER_ID, CMD_HANDLER
+from config import CMD_HANDLER as cmd
 
 @Client.on_message(filters.command("banall", cmd) & filters.me)
 async def banall(client, message):
