@@ -31,7 +31,7 @@ async def adminlist(client: Client, message: Message):
             name = a.user.first_name + " " + a.user.last_name
         except:
             name = a.user.first_name
-        if nama is None:
+        if name is None:
             name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
         if a.status == enums.ChatMemberStatus.ADMINISTRATOR:
             if a.user.is_bot:
@@ -178,7 +178,7 @@ async def get_list_bots(client: Client, message: Message):
         if name is None:
             name = "☠️ 𝐃𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭"
         if a.user.is_bot:
-            bots.append(mention_markdown(a.user.id, nama))
+            bots.append(mention_markdown(a.user.id, name))
     teks = "**𝐀𝐥𝐥 𝐛𝐨𝐭𝐬 𝐢𝐧 𝐠𝐫𝐨𝐮𝐩 {}**\n".format(grup.title)
     teks += "╒═══「 𝐁𝐨𝐭𝐬 」\n"
     for x in bots:
