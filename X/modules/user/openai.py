@@ -16,6 +16,11 @@ import random
 
 from .help import *
 
+API_ENDPOINTS = [
+    "https://api.ajinkya.link/gpt.php?question={question}",
+    "https://chatgpt.apinepdev.workers.dev/?question={question}"
+]
+
 @Client.on_message(filters.command("ai", ".") & filters.me)
 async def openai(client: Client, message: Message):
     if len(message.command) == 1:
@@ -23,22 +28,22 @@ async def openai(client: Client, message: Message):
     
     question = message.text.split(" ", maxsplit=1)[1]
     
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}",
-    }
-
-    url = f"https://api.ajinkya.link/gpt.php?question={question}"
-    
     msg = await message.reply("`Be patient..")
-    
-    try:
-        response = requests.get(url).json()
-        await msg.edit(response["answer"])
-    except MessageNotModified:
-        pass
-    except Exception:
-        await msg.edit("Sᴏʀʀʏ Cʜᴀᴛ Gᴘᴛ ɪs ᴀᴛ ʀᴇsᴛ ᴄᴜʀʀᴇɴᴛʟʏ ᴅᴏ ʏᴏᴜʀ ᴡᴏʀᴋ ʙʏ ʏᴏᴜʀ sᴇʟғ")
+
+    for endpoint in API_ENDPOINTS:
+        url = endpoint.format(question=quote(question))
+        
+        try:
+            response = requests.get(url).json()
+            await msg.edit(response["answer"])
+            break
+        except MessageNotModified:
+            pass
+        except Exception:
+            continue
+
+    else:
+        await msg.edit("Sorry, ChatGPT is currently unavailable. Please try again later.")
 
 add_command_help(
     "•─╼⃝𖠁 ᴏᴘᴇɴᴀɪ",
