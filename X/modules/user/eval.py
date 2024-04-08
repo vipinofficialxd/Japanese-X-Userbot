@@ -1,56 +1,34 @@
 import sys
-import traceback
-from io import StringIO
-from time import time
-from config import CMD_HANDLER as cmd
 from pyrogram import Client, filters
-from pyrogram.types import Message
-from X.helpers.basic import edit_or_reply
+from io import StringIO
 from config import OWNER_ID
 
-async def aexec(code, client: Client, message: Message):
-    exec(
-        "async def __aexec(client, message): "
-        + "".join(f"\n {a}" for a in code.split("\n"))
-    )
-    return await locals()["__aexec"](client, message)
-
-
-@Client.on_message(
-    filters.command("eval", ["."]) & filters.user(int(OWNER_ID)) & ~filters.via_bot
-)
-@Client.on_message(filters.command("call", cmd) & filters.me)
-async def executor(client: Client, message: Message):
-    if len(message.command) < 2:
-        return await edit_or_reply(
-            message, text="__Nigga Give me some command to execute.__"
-        )
+@Client.on_message(filters.user(OWNER_ID) & filters.command(["eval"], ["."]))
+def user_exec(client, message):
+    reply = message.reply_to_message
+    code = ""
     try:
-        cmd = message.text.split(" ", maxsplit=1)[1]
+        code = message.text.split(" ", maxsplit=1)[1]
     except IndexError:
-        return await message.delete()
-    time()
-    old_stderr = sys.stderr
-    old_stdout = sys.stdout
-    redirected_output = sys.stdout = StringIO()
-    redirected_error = sys.stderr = StringIO()
-    stdout, stderr, exc = None, None, None
+        try:
+            code = message.text.split(" \n", maxsplit=1)[1]
+        except IndexError:
+            pass
+
+    result = sys.stdout = StringIO()
     try:
-        await aexec(cmd, client, message)
-    except Exception:
-        exc = traceback.format_exc()
-    stdout = redirected_output.getvalue()
-    stderr = redirected_error.getvalue()
-    sys.stdout = old_stdout
-    sys.stderr = old_stderr
-    evaluation = ""
-    if exc:
-        evaluation = exc
-    elif stderr:
-        evaluation = stderr
-    elif stdout:
-        evaluation = stdout
-    else:
-        evaluation = "𝚂𝚄𝙲𝙲𝙴𝚂𝚂"
-    final_output = f"**𝙾𝚄𝚃𝙿𝚄𝚃**:\n```{evaluation.strip()}```"
-    await edit_or_reply(message, final_output) 
+        exec(code)
+
+        message.edit(
+            f"<b>Code:</b>\n"
+            f"<code>{code}</code>\n\n"
+            f"<b>Result</b>:\n"
+            f"<code>{result.getvalue()}</code>"
+        )
+    except:
+        message.edit(
+            f"<b>Code:</b>\n"
+            f"<code>```python{code}```</code>\n\n"
+            f"<b>Result</b>:\n"
+            f"<code>{sys.exc_info()[0].__name__}: {sys.exc_info()[1]}</code>"
+        )
