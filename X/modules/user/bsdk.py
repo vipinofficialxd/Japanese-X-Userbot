@@ -6,7 +6,7 @@ from config import CMD_HANDLER as cmd
 
 from .help import *
 
-@borg.on(admin_cmd("bsdk"))
+@Client.on(admin_cmd("bsdk"))
 async def _(event):
     if event.fwd_from:
         return
