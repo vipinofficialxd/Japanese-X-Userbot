@@ -6,7 +6,7 @@ from config import CMD_HANDLER as cmd
 
 from .help import *
 
-@Client.on(admin_cmd("bsdk"))
+@Client.on_message(filters.command("bsdk", cmd) & filters.me)
 async def _(event):
     if event.fwd_from:
         return
