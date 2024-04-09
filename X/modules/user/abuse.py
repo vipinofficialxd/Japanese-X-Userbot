@@ -7,7 +7,7 @@ from config import CMD_HANDLER as cmd
 from .help import *
 import asyncio
 
-@Client.on_message(filters.command(OWNER_ID) & filters.cmd(["abuse", "teri"], ["."]))
+@Client.on_message(filters.command("abuse", cmd) & filters.me)
 async def abuse(x: Client, e: Message):
     NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
