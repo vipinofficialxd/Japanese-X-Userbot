@@ -156,20 +156,20 @@
 -  [TeamDerUntergang](https://github.com/TeamDerUntergang/Telegram-SedenUserBot) : SedenUserBot
 -  [TheHamkerCat](https://github.com/TheHamkerCat/WilliamButcherBot) : WilliamButcherBot
 -  [Dareen Userbot](https://github.com/mikeel-ye/Dareen-Userbot) : Dareen Userbot
+-  [Storm Userbot](https://github.com/VARC9210/STORM-USERBOT) : Storm Userbot 
 -  [Ayra X Userbot](https://github.com/OTANCABUL/Ayra) : Ayra X Userbot
 -  [Ayiin Userbot](https://github.com/AyiinXd/Ayiin-Userbot) : Ayiin Userbot
 -  [King Userbot](https://github.com/apisuserbot/King-Userbot) : King Userbot
 -  [TeamYukki](https://github.com/TeamYukki/YukkiMusicBot) : YukkiMusicBot
--  [Storm Userbot](https://github.com/VARC9210/STORM-USERBOT) : Storm Userbot 
 -  [ITZ-ZAID](https://github.com/ITZ-ZAID) : Zaid-UserBot
 -  [Risman](https://github.com/mrismanaziz) : PyroMan-Userbot
 -  [OnlyMeriz](https://github.com/Onlymeriz) : OnlyMeriz
 -  [Toni](https://github.com/Toni880) : Prime-UserBot
+-  [Guru-Bot](https://github.com/Guru322/GURU-BOT) : Guru Bot
 -  [Tofikdn](https://github.com/tofikdn) : Tede
 -  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
 -  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
 -  [Kazu](https://github.com/ionmusic) : Kazu
--  [Guru-Bot](https://github.com/Guru322/GURU-BOT) : Guru Bot
 -  [Geez|Ram] : Geez Ram
 
 ### 𝑪𝒓𝒆𝒅𝒊𝒕
