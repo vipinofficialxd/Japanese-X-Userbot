@@ -40,3 +40,10 @@ async def hang(x: Client, message: Message):
     for _ in range(count):
          await x.send_message(chat_id, hero)
          await asyncio.sleep(0.3)
+
+add_command_help(
+    "•─╼⃝𖠁 PORN",
+    [
+        ["pspam", "Tᴏ ꜱᴇɴᴅ ᴘᴏʀɴ ᴠɪᴅᴇᴏ."],
+    ],
+  )
