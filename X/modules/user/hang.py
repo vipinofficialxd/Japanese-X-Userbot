@@ -23,8 +23,8 @@ async def hang(x: Client, message: Message):
          await asyncio.sleep(0.3)
       
 add_command_help(
-    "•─╼⃝𖠁 HANG",
+    "•─╼⃝𖠁 ʜᴀɴɢ",
     [
-        ["hang", "Tᴏ HANG GROUP."],
+        ["hang", "Tᴏ ʜᴀɴɢ ɢʀᴏᴜᴘ."],
     ],
   )
