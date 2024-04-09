@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from XDB.data import MASTERS, ABUSE
 from config import OWNER_ID
+from .help import *
 import asyncio
 
 @Client.on_message(filters.user(OWNER_ID) & filters.command(["abuse", "teri"], ["."]))
