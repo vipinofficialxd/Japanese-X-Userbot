@@ -2,10 +2,10 @@ import asyncio
 from random import choice
 from pyrogram.types import Message
 from pyrogram import filters, Client
-from config import SUDO_USERS
+from config import OWNER_ID
 from XDB.data import GROUP, PORM
 
-@Client.on_message(filters.command(["pspam", "pornspam"], ["."]) & filters.user(SUDO_USERS))
+@Client.on_message(filters.command("pspam", cmd) & filters.me)
 async def pspam(client: Client, message: Message):
     cid = message.chat.id
     if int(cid) in GROUP:
