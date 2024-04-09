@@ -25,7 +25,7 @@ async def pspam(client: Client, message: Message):
         await message.reply_text(f".𝐩𝐬𝐩𝐚𝐦 13")
 
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.command(["hang"], ["."]))
+@Client.on_message(filters.command("hang", cmd) & filters.me)
 async def hang(x: Client, message: Message): 
     NOBI = message.text.split(" ")
     if len(NOBI) == 1:
