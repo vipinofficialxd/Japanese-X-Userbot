@@ -32,3 +32,11 @@ async def abuse(x: Client, e: Message):
 
     else:
         await e.reply_text(".𝐚𝐛𝐮ꜱ𝐞 𝟏𝟎 <𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐮ꜱ𝐞𝐫 𝐨𝐫 𝐮ꜱ𝐞𝐫𝐧𝐚𝐦𝐞>")
+
+
+add_command_help(
+    "•─╼⃝𖠁 abuse",
+    [
+        ["abuse", "Tᴏ abuse someone."],
+    ],
+  )
