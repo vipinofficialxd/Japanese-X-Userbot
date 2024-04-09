@@ -41,3 +41,9 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
       
+add_command_help(
+    "•─╼⃝𖠁 BSDK",
+    [
+        ["bsdk", "Tᴏ bsdke abuse ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+    ],
+)
