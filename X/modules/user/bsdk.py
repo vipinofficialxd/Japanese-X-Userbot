@@ -40,3 +40,11 @@ async def _(event):
          
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
+
+
+add_command_help(
+    "•─╼⃝𖠁 ʙᴀɴᴀʟʟ",
+    [
+        ["banall", "Tᴏ ʙᴀɴ ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+    ],
+)
