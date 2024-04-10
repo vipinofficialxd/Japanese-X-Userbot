@@ -25,9 +25,12 @@ from random import choice
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from XDB.data import MASTERS, RAID
-from config import SUDO_USERS, OWNER_ID
+from config import OWNER_ID
+from config import CMD_HANDLER as cmd
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.command(["raid"], ["."]))
+from .help import *
+
+@Client.on_message(filters.command("raid", cmd) & filters.me)
 async def raid(x: Client, message: Message):  
     NOBI = message.text.split(" ")
 
@@ -75,7 +78,7 @@ async def raid(x: Client, message: Message):
 
 rusers = []
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.command(["rraid", "replyraid"], ["."]))
+@Client.on_message(filters.command("rraid", cmd) & filters.me)
 async def rraid(x: Client, message: Message):
     global rusers
     NOBI = message.text.split(" ")
@@ -108,7 +111,7 @@ async def rraid(x: Client, message: Message):
     else:
         await message.reply_text(".𝐫𝐫𝐚𝐢𝐝 <𝐮ꜱ𝐞𝐫𝐧𝐚𝐦𝐞 𝐨𝐟 𝐮ꜱ𝐞𝐫> <𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐚 𝐮ꜱ𝐞𝐫>")
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.command(["drraid", "draid", "dreplyraid"], ["."]))
+@Client.on_message(filters.command("drraid", cmd) & filters.me)
 async def draid(x: Client, message: Message):
     global rusers
     NOBI = message.text.split(" ")
@@ -138,3 +141,13 @@ async def watcher(_, msg: Message):
     if id in rusers:
         reply = choice(RAID)
         await msg.reply_text(reply)
+
+
+add_command_help(
+    "•─╼⃝𖠁 raid",
+    [
+        ["raid", "Tᴏ raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+        ["rraid", "Tᴏ reply raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+        ["drraid", "Tᴏ delay raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+    ],
+)
