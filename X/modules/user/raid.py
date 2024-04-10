@@ -41,7 +41,7 @@ async def raid(x: Client, message: Message):
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞ʀ ☠️")
         elif id == OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif id in SUDO_USERS:
+        elif id in OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
         else:
             counts = int(NOBI[1])
@@ -61,7 +61,7 @@ async def raid(x: Client, message: Message):
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞 ☠️")
         elif id == OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif id in SUDO_USERS:
+        elif id in OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
         else:
             counts = int(NOBI[1])
@@ -90,7 +90,7 @@ async def rraid(x: Client, message: Message):
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞 ☠️")
         elif id == OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif id in SUDO_USERS:
+        elif id in OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
         else:
             rusers.append(id)
@@ -102,7 +102,7 @@ async def rraid(x: Client, message: Message):
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞 ☠️")
         elif user_id == OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif user_id in SUDO_USERS:
+        elif user_id in OWNER_ID:
             await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
         else:
             rusers.append(user_id)
