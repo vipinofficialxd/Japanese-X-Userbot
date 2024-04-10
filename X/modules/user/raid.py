@@ -76,78 +76,12 @@ async def raid(x: Client, message: Message):
     else:
         await message.reply_text(".𝐫𝐚𝐢𝐝 𝟏𝟎 <𝐮ꜱ𝐞𝐫𝐧𝐚𝐦𝐞 𝐨𝐟 𝐮ꜱ𝐞𝐫> <𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐚 𝐮ꜱ𝐞𝐫>")
 
-rusers = []
 
-@Client.on_message(filters.command("rraid", cmd) & filters.me)
-async def rraid(x: Client, message: Message):
-    global rusers
-    NOBI = message.text.split(" ")
-
-    if len(NOBI) > 1:
-        ok = await x.get_users(NOBI[1])
-        id = ok.id
-        if id in MASTERS:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞 ☠️")
-        elif id == OWNER_ID:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif id in OWNER_ID:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
-        else:
-            rusers.append(id)
-            await message.reply_text("𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐫𝐞𝐩𝐥𝐲𝐫𝐚𝐢𝐝 ✅")
-
-    elif message.reply_to_message:
-        user_id = message.reply_to_message.from_user.id
-        if user_id in MASTERS:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲𝐬 𝐢𝐬 𝐭𝐡𝐞 𝐦𝐚𝐬𝐭𝐞𝐫 𝐨𝐟 𝐣𝐚𝐩𝐚𝐧𝐞𝐬𝐞 ☠️")
-        elif user_id == OWNER_ID:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐨𝐰𝐧𝐞𝐫 𝐨𝐟 𝐭𝐡𝐢𝐬 𝐛𝐨𝐭 🥀")
-        elif user_id in OWNER_ID:
-            await message.reply_text("𝐧𝐨𝐩𝐞 𝐭𝐡𝐢𝐬 𝐠𝐮𝐲 𝐢𝐬 𝐬𝐮𝐝𝐨 𝐮𝐬𝐞𝐫 💗")
-        else:
-            rusers.append(user_id)
-            await message.reply_text("𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 𝐫𝐞𝐩𝐥𝐲𝐫𝐚𝐢𝐝 ✅")
-
-    else:
-        await message.reply_text(".𝐫𝐫𝐚𝐢𝐝 <𝐮ꜱ𝐞𝐫𝐧𝐚𝐦𝐞 𝐨𝐟 𝐮ꜱ𝐞𝐫> <𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐚 𝐮ꜱ𝐞𝐫>")
-
-@Client.on_message(filters.command("drraid", cmd) & filters.me)
-async def draid(x: Client, message: Message):
-    global rusers
-    NOBI = message.text.split(" ")
-
-    if len(NOBI) > 1:
-        ok = await x.get_users(NOBI[1])
-        id = ok.id
-        if id in rusers:
-            rusers.remove(id)
-            await message.reply_text("𝐫𝐞𝐩𝐥𝐲 𝐫𝐚𝐢𝐝 𝐝𝐞-𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 ✅")
-
-    elif message.reply_to_message:
-        user_id = message.reply_to_message.from_user.id
-        ok = await x.get_users(user_id)
-        id = ok.id
-        if id in rusers:
-            rusers.remove(id)
-            await message.reply_text("𝐫𝐞𝐩𝐥𝐲 𝐫𝐚𝐢𝐝 𝐝𝐞-𝐚𝐜𝐭𝐢𝐯𝐚𝐭𝐞𝐝 ✅")
-
-    else:
-        await message.reply_text(".𝐝𝐫𝐫𝐚𝐢𝐝 <𝐮ꜱ𝐞𝐫𝐧𝐚𝐦𝐞 𝐨𝐟 𝐮ꜱ𝐞𝐫> <𝐫𝐞𝐩𝐥𝐲 𝐭𝐨 𝐚 𝐮ꜱ𝐞𝐫>")
-
-@Client.on_message(~filters.me & filters.incoming)
-async def watcher(_, msg: Message):
-    global rusers
-    id = msg.from_user.id
-    if id in rusers:
-        reply = choice(RAID)
-        await msg.reply_text(reply)
 
 
 add_command_help(
     "•─╼⃝𖠁 raid",
     [
         ["raid", "Tᴏ raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
-        ["rraid", "Tᴏ reply raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
-        ["drraid", "Tᴏ delay raid ᴀʟʟ ᴍᴇᴍʙᴇʀ ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
     ],
 )
