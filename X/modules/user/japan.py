@@ -56,7 +56,7 @@ async def japan_api(bot: Client, message: Message):
 
 for x in cf_apii_data:
     add_command_help(
-        "•─╼⃝𖠁 Mʏ Cᴏᴜɴᴛʀʏ",
+        "•─╼⃝𖠁 Jᴀᴘᴀɴ",
         [
             [f"{x}", cf_apii_data[x]["help"]],
         ],
