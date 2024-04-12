@@ -25,7 +25,6 @@ async def pspam(client: Client, message: Message):
         await message.reply_text(f".𝐩𝐬𝐩𝐚𝐦 13")
 
 
-
 add_command_help(
     "•─╼⃝𖠁 PORN",
     [
