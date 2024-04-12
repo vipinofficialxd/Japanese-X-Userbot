@@ -145,3 +145,14 @@ async def give_barefoot(bot: Client, message: Message):
                     caption=caption
                 ),
             )
+
+add_command_help(
+    "•─╼⃝𖠁 Anime",
+    [
+       ["genshin", "Gɪᴠᴇ genshin."],
+       ["swimsuit", "Gɪᴠᴇ swimsuit ᴀɴɪᴍᴀᴛɪᴏɴ."],
+       ["schoolswimsuit", "Gɪᴠᴇ schoolswimsuit ᴀɴɪᴍᴀᴛɪᴏɴ."],
+       ["white", "Gɪᴠᴇ white ᴀɴɪᴍᴀᴛɪᴏɴ."],
+       ["barefoot", "Gɪᴠᴇ barefoot ᴀɴɪᴍᴀᴛɪᴏɴ."],
+            ],
+)
