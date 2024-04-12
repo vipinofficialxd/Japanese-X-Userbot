@@ -297,7 +297,7 @@ add_command_help(
        ["touhou", "Give touhou animation."],
        ["gamecg", "Give gamecg animation."],
        ["hololive", "Give hololive animation."],
-       ["uncensored", "Give uncensored animation."]
-       ["sunglasses", "Give sunglasses animation."]
+       ["uncensored", "Give uncensored animation."],
+       ["sunglasses", "Give sunglasses animation."],
         ],
 )
