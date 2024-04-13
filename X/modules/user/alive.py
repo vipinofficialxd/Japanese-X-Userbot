@@ -48,7 +48,7 @@ async def alip(client: Client, message: Message):
         f"{emoji} <b>𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{python_version()}</code> \n"
         f"{emoji} ✧ 𝙶𝚁𝙾𝚄𝙿 : [𝚂𝚄𝙿𝙿𝙾𝚁𝚃](https://t.me/Japanese_Userbot_Support)\n\n"
         f"{emoji} ✧[𝙲𝙷𝙰𝙽𝙽𝙴𝙻](https://t.me/Japanese_Userbot)** \n"
-        f"{emoji} ✧[𝙳𝙴𝙿𝙻𝙾𝚈](http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot) 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽 [{𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓}](http://github.com/Team-Japanese/Japanese-X-Userbot) ✧\n"
+        f"{emoji} ✧[𝙳𝙴𝙿𝙻𝙾𝚈](http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot) 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽 [𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓](http://github.com/Team-Japanese/Japanese-X-Userbot) ✧\n"
         
     )
     try:
