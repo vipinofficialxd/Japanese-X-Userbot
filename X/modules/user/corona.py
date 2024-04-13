@@ -46,7 +46,7 @@ async def corona_all(bot: X, message: Message):
 
 
 @Client.on_message(filters.command("coronasrch", cmd) & filters.me)
-async def corona_search(bot: UserBot, message: Message):
+async def corona_search(bot: X, message: Message):
     cmd = message.command
 
     if not (len(cmd) >= 2):
