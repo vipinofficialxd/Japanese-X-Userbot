@@ -2,12 +2,9 @@ import asyncio
 import datetime
 
 from prettytable import PrettyTable
-from pyrogram import filters
-from pyrogram.types import Message
 from pyrogram import Client, filters
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
-from X import X
 
 from X.helpers.aiohttp_helper import AioHttp
 
@@ -15,7 +12,7 @@ from .help import *
 
 
 @Client.on_message(filters.command("corona", cmd) & filters.me)
-async def corona_all(bot: X, message: Message):
+async def corona_all(client, message):
     try:
         r = await AioHttp().get_json("https://corona.lmao.ninja/v2/all?yesterday=true")
         last_updated = datetime.datetime.fromtimestamp(r["updated"] / 1000).strftime(
@@ -46,7 +43,7 @@ async def corona_all(bot: X, message: Message):
 
 
 @Client.on_message(filters.command("coronasrch", cmd) & filters.me)
-async def corona_search(bot: X, message: Message):
+async def corona_search(client, message):
     cmd = message.command
 
     if not (len(cmd) >= 2):
