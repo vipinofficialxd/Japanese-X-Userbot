@@ -1,289 +1,51 @@
-import aiohttp
+import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message
-
+from jikanpy import Jikan
+from googletrans import Translator
 
 from X.helpers.PyroHelpers import GetChatID, ReplyCheck
-from .help import * 
+from .help import *
 
-@Client.on_message(filters.command(["genshin"], ".") & filters.me)
-async def give_genshin(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/genshin"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-              )
+jikan = Jikan()
+translator = Translator()
 
-@Client.on_message(filters.command(["swimsuit"], ".") & filters.me)
-async def give_swimsuit(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/swimsuit"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
+@Client.on_message(filters.command(["anime"], ".") & filters.me)
+async def anime_search(bot: Client, message: Message):
+    text = message.text.split(maxsplit=1)[1]
+    anime = jikan.search('anime', text)['results'][0]
+    background = anime['background']
+    synopsis = anime['synopsis']
+    translated_background = await translate(background, 'en')
+    translated_synopsis = await translate(synopsis, 'hi')
 
-@Client.on_message(filters.command(["schoolswimsuit"], ".") & filters.me)
-async def give_schoolswimsuit(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/schoolswimsuit"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
+    AnimeInfo = f"""
+🎀 • *Title:* {anime['title']}
+🎋 • *Format:* {anime['type']}
+📈 • *Status:* {anime['status'].upper().replace('_', ' ')}
+🍥 • *Total Episodes:* {anime['episodes']}
+🎈 • *Duration:* {anime['duration']}
+✨ • *Based on:* {anime['source'].upper()}
+💫 • *Released:* {anime['aired']['from']}
+🎗 • *Finished:* {anime['aired']['to']}
+🎐 • *Popularity:* {anime['popularity']}
+🎏 • *Favorites:* {anime['favorites']}
+🎇 • *Rating:* {anime['score']}
+🏅 • *Rank:* {anime['rank']}
+♦ • *Trailer:* {anime['trailer_url']}
+🌐 • *URL:* {anime['url']}
+🎆 • *Background:* {translated_background}
+❄ • *Synopsis:* {translated_synopsis}
+"""
 
-@Client.on_message(filters.command(["white"], ".") & filters.me)
-async def give_white(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/white"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
+    await asyncio.gather(
+        message.delete(),
+        bot.send_message(GetChatID(message), AnimeInfo, reply_to_message_id=ReplyCheck(message))
+    )
 
-@Client.on_message(filters.command(["barefoot"], ".") & filters.me)
-async def give_barefoot(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/barefoot"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
-
-@Client.on_message(filters.command(["touhou"], ".") & filters.me)
-async def give_bully(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/touhou"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
-@Client.on_message(filters.command(["gamecg"], ".") & filters.me)
-async def give_bully(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/gamecg"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
-
-@Client.on_message(filters.command(["hololive"], ".") & filters.me)
-async def give_bully(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/hololive"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
-
-@Client.on_message(filters.command(["uncensored"], ".") & filters.me)
-async def give_bully(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/uncensored"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
-
-@Client.on_message(filters.command(["sunglasses"], ".") & filters.me)
-async def give_bully(bot: Client, message: Message):
-    URL = "https://fantox-apis.vercel.app/sunglasses"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(URL) as request:
-            if request.status == 404:
-                return await message.edit("`no anime for you :c")
-            result = await request.json()
-            url = result.get("url", None)
-            
-            if message.reply_to_message and message.reply_to_message.from_user:
-                replied_user = message.reply_to_message.from_user
-                user_first_name = replied_user.first_name
-                user_id = replied_user.id
-                user_link = f"[{user_first_name}](tg://user?id={user_id})"
-                caption = f"ғᴏʀ ʏᴏᴜ {user_link}"
-            else:
-                return await message.edit("ᴘʟᴇᴀꜱᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʀᴇᴀᴄᴛ ᴛᴏ ꜱᴏᴍᴇᴏɴᴇ.")
-            
-            await asyncio.gather(
-                message.delete(),
-                bot.send_video(
-                    GetChatID(message), url, 
-                    reply_to_message_id=ReplyCheck(message),
-                    caption=caption
-                ),
-            )
+async def translate(text, dest):
+    translation = translator.translate(text, dest=dest)
+    return translation.text
 
 
 add_command_help(
@@ -301,3 +63,6 @@ add_command_help(
        ["sunglasses", "Give sunglasses animation."],
         ],
 )
+
+
+
