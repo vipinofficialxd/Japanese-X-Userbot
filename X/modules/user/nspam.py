@@ -26,7 +26,7 @@ async def pspam(client: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 PORN",
+    "•─╼⃝𖠁 ᴘᴏʀɴ",
     [
         ["pspam", "Tᴏ ꜱᴇɴᴅ ᴘᴏʀɴ ᴠɪᴅᴇᴏ."],
     ],
