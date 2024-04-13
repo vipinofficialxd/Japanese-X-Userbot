@@ -87,9 +87,9 @@ async def corona_search(client, message):
 add_command_help(
     "corona",
     [
-        [".c", "Sends global corona stats: cases, deaths, recovered, and active cases"],
+        [".corona", "Sends global corona stats: cases, deaths, recovered, and active cases"],
         [
-            ".cs Country",
+            ".coronasrch Country",
             "Sends cases, new cases, deaths, new deaths, recovered, active cases, critical cases, "
             "and cases/deaths per one million people for a specific country",
         ],
