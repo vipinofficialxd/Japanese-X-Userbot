@@ -161,7 +161,7 @@ async def upstream(client: Client, message: Message):
             repo.__del__()
             return
         await status.edit(
-            "`[HEROKU]: Update Deploy X-Pyrobot In process...`"
+            "`[HEROKU]: Update Deploy Japanese X Userbot In process...`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
