@@ -35,10 +35,10 @@ babi = [
 
 
 @Client.on_message(
-    filters.command(["cigiben"], ".") & filters.user(DEVS) & ~filters.me
+    filters.command(["fgban"], ".") & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["giben"], cmd) & filters.me)
-async def giben(client: Client, message: Message):
+@Client.on_message(filters.command(["fgban"], cmd) & filters.me)
+async def fgban(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`Gbaning...`")
@@ -69,10 +69,10 @@ async def giben(client: Client, message: Message):
     await ex.edit(msg)
 
 @Client.on_message(
-    filters.command("cigimut", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("fgmute", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["gimut"], cmd) & filters.me)
-async def gimut(client: Client, message: Message):
+@Client.on_message(filters.command(["fgmute"], cmd) & filters.me)
+async def fgmute(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`GMuting...`")
@@ -103,10 +103,10 @@ async def gimut(client: Client, message: Message):
     await ex.edit(msg)
 
 @Client.on_message(
-    filters.command("cigikik", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("fgkick", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["gikik"], cmd) & filters.me)
-async def gikik(client: Client, message: Message):
+@Client.on_message(filters.command(["fgkick"], cmd) & filters.me)
+async def fgkick(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
         ex = await message.reply_text("`GKick...`")
@@ -138,10 +138,10 @@ async def gikik(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command("cigikes", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command("fgcast", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["gikes"], cmd) & filters.me)
-async def gcast_cmd(client: Client, message: Message):
+@Client.on_message(filters.command(["fgcast"], cmd) & filters.me)
+async def fgcast(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         tex = await message.reply_text("`Started global broadcast...`")
     else:
@@ -156,9 +156,9 @@ async def gcast_cmd(client: Client, message: Message):
 add_command_help(
     "•─╼⃝𖠁 Fᴀᴋᴇ",
     [
-        [f"giben <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Bᴀɴɴɪɴɢ."],
-        [f"gimut <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Mᴜᴛᴇ."],
-        [f"gikik <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Kɪᴄᴋ."],
-        [f"gikes <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ ʙʀᴏᴀᴅᴄᴀꜱᴛ."],
+        [f"gban <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Bᴀɴɴɪɴɢ."],
+        [f"gmute <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Mᴜᴛᴇ."],
+        [f"gkick <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ Kɪᴄᴋ."],
+        [f"gcast <ʀᴇᴘʟʏ/ᴜꜱᴇʀɴᴀᴍᴇ/ᴜꜱᴇʀɪᴅ>", "Fᴀᴋᴇ Gʟᴏʙᴀʟ ʙʀᴏᴀᴅᴄᴀꜱᴛ."],
     ],
   )
