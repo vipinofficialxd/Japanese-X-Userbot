@@ -1,4 +1,4 @@
-from pyrogram import events
+
 import subprocess
 from pyrogram.errors import MessageEmptyError, MessageTooLongError, MessageNotModifiedError
 import io
