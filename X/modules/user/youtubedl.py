@@ -149,87 +149,6 @@ async def song(client: Client, message: Message):
             os.remove(files)
 
 
-@Client.on_message(filters.command("saavn", cmd) & filters.me)
-async def savnana(client: Client, message: Message):
-    song = get_text(message)
-    if not song:
-        return await message.edit_text("`Give me Something to Search")
-    time.time()
-    lol = await edit_or_reply(message, "`Searching on Saavn...`")
-    sung = song.replace(" ", "%20")
-    url = f"https://jostapi.herokuapp.com/saavn?query={sung}"
-    try:
-        k = (r.get(url)).json()[0]
-    except IndexError:
-        return await eod(lol, "`Song Not Found.. `")
-    title = k["song"]
-    urrl = k["media_url"]
-    img = k["image"]
-    k["duration"]
-    singers = k["singers"]
-    urlretrieve(urrl, title + ".mp3")
-    urlretrieve(img, title + ".jpg")
-    file = wget.download(urrl)
-    await client.send_audio(
-        message.chat.id,
-        file,
-        caption=f"Song from saavan uploaded by Japanese XUserbot \n Song name={title}\n Singers={singers}",
-    )
-    await lol.delete()
-    os.remove(title + ".mp3")
-    os.remove(title + ".jpg")
-
-
-@Client.on_message(filters.command("deezer", cmd) & filters.me)
-async def deezergeter(client: Client, message: Message):
-    rep = await edit_or_reply(message, "`Searching For Song On Deezer.....`")
-    sgname = get_text(message)
-    if not sgname:
-        await rep.edit(
-            "`Please Give Me A Valid Input. You Can Check Help Menu To Know More!`"
-        )
-        return
-    link = f"https://api.deezer.com/search?q={sgname}&limit=1"
-    dato = r.get(url=link).json()
-    match = dato.get("data")
-    try:
-        urlhp = match[0]
-    except IndexError:
-        await rep.edit("`Song Not Found. Try Searching Some Other Song`")
-        return
-    urlp = urlhp.get("link")
-    thumbs = urlhp["album"]["cover_big"]
-    thum_f = wget.download(thumbs)
-    polu = urlhp.get("artist")
-    replo = urlp[29:]
-    urlp = f"https://starkapis.herokuapp.com/deezer/{replo}"
-    datto = r.get(url=urlp).json()
-    mus = datto.get("url")
-    sname = f"{urlhp.get('title')}.mp3"
-    doc = r.get(mus)
-    await client.send_chat_action(message.chat.id, "upload_audio")
-    await rep.edit("`Downloading Song From Deezer!`")
-    with open(sname, "wb") as f:
-        f.write(doc.content)
-    time.time()
-    car = f"""
-**Song Name :** {urlhp.get("title")}
-**Duration :** {urlhp.get('duration')} Seconds
-**Artist :** {polu.get("name")}
-Music Downloaded And Uploaded By Japanese X Userbot"""
-    await rep.edit(f"`Downloaded {sname}! Now Uploading Song...`")
-    await client.send_audio(
-        message.chat.id,
-        audio=open(sname, "rb"),
-        duration=int(urlhp.get("duration")),
-        title=str(urlhp.get("title")),
-        performer=str(polu.get("name")),
-        thumb=thum_f,
-        caption=car,
-    )
-    await client.send_chat_action(message.chat.id, "cancel")
-    await rep.delete()
-
 
 add_command_help(
     "•─╼⃝𖠁 ʏᴏᴜᴛᴜʙᴇ ᴅʟ",
@@ -238,17 +157,6 @@ add_command_help(
         [
             "video",
             "Dᴏᴡɴʟᴏᴀᴅ Vɪᴅᴇᴏ ғʀᴏᴍ YᴏᴜTᴜʙᴇ ",
-        ],
-    ],
-)
-
-add_command_help(
-    "•─╼⃝𖠁 ꜱᴏɴɢ",
-    [
-        ["deezer", "Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Dᴇᴇᴢᴇʀ."],
-        [
-            "saavn",
-            "Dᴏᴡɴʟᴏᴀᴅ Fʀᴏᴍ Sᴀᴀᴠɴ",
         ],
     ],
 )
