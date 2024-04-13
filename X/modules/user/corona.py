@@ -7,6 +7,7 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
+from X import X
 
 from X.helpers.aiohttp_helper import AioHttp
 
