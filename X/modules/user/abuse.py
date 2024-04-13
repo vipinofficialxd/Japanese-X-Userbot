@@ -35,7 +35,7 @@ async def abuse(x: Client, e: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 abuse",
+    "•─╼⃝𖠁 ᴀʙᴜꜱᴇ",
     [
         ["abuse", "Tᴏ abuse someone."],
     ],
