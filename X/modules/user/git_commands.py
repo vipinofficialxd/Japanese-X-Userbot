@@ -45,5 +45,12 @@ async def githubuser(client: Client, message: Message):
             except Exception as e:
                 print(str(e))
                 pass
-    await message.reply_photo(photo=avatar_url, caption=caption) 
+    await message.reply_photo(photo=avatar_url, caption=caption)
+
+add_command_help(
+    "•─╼⃝𖠁 GɪᴛHᴜʙ",
+    [
+        ["gitinfo", "ᴛᴏ ɢᴇᴛ ɪɴғᴏ ᴀʙᴏᴜᴛ ᴛʜᴇ GɪᴛHᴜʙ ᴜꜱᴇʀ."],
+    ],
+)
 
