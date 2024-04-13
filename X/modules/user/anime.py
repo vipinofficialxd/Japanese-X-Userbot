@@ -287,7 +287,7 @@ async def give_bully(bot: Client, message: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 ANIME",
+    "•─╼⃝𖠁 ᴀɴɪᴍᴇ",
     [
        ["genshin", "Gɪᴠᴇ genshin."],
        ["swimsuit", "Gɪᴠᴇ swimsuit ᴀɴɪᴍᴀᴛɪᴏɴ."],
