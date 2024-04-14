@@ -14,7 +14,7 @@ from .help import *
 @Client.on_message(filters.command("corona", cmd) & filters.me)
 async def corona_all(client, message):
     try:
-        r = await AioHttp().get_json("https://api-ninjas.com/api/covid19")
+        r = await AioHttp().get_json("https://api-ninjas.com/api/covid19?date")
         last_updated = datetime.datetime.fromtimestamp(r["updated"] / 1000).strftime(
             "%Y-%m-%d %I:%M:%S"
         )
@@ -55,7 +55,7 @@ async def corona_search(client, message):
     country = cmd[1]
     await message.edit(f"```Getting Corona statistics for {country}```")
 
-    r = await AioHttp().get_json(f"https://api-ninjas.com/api/covid19/countries/{country}")
+    r = await AioHttp().get_json(f"https://api.api-ninjas.com/v1/covid19?country=/{country}")
     if "cases" not in r:
         await message.edit("```The country could not be found!```")
         await asyncio.sleep(3)
