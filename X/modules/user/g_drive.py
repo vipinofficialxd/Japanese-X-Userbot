@@ -23,3 +23,15 @@ try:
     user.g_auth = g_auth
     user.g_drive = g_drive
 except: logging.warn('failed to load gdrive.')
+
+@Client.on_message(
+    ~Client.filters.scheduled &
+    ~Client.filters.forwarded &
+    ~Client.filters.sticker &
+    ~Client.filters.via_bot &
+    Client.owner &
+    user.command(
+        ['gul', 'gUpload'],
+        prefixes=Client.cmd_prefixes,
+    ),
+)
