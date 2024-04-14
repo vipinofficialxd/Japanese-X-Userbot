@@ -28,7 +28,7 @@ async def get_lyrics(client: Client, message: Message):
                 image = lyrics_data['image']
                 lyrics = lyrics_data['lyrics']
 
-                lyrics_file_path = f"{song_name}_lyrics.txt"
+                lyrics_file_path = f"{question}_lyrics.txt"  # Use 'question' instead of 'song_name'
                 with open(lyrics_file_path, "w", encoding="utf-8") as file:
                     file.write(lyrics)
 
