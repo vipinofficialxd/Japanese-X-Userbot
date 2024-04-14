@@ -24,17 +24,7 @@ try:
     user.g_drive = g_drive
 except: logging.warn('failed to load gdrive.')
 
-@Client.on_message(
-    ~Client.filters.scheduled &
-    ~Client.filters.forwarded &
-    ~Client.filters.sticker &
-    ~Client.filters.via_bot &
-    Client.owner &
-    user.command(
-        ['gul', 'gUpload'],
-        prefixes=Client.cmd_prefixes,
-    ),
-)
+@Client.on_message(filters.command("gUpload", cmd) & filters.me)
 
 async def gUpload_handler(_, message: Message):
     download_message = await user.get_message_to_download(message)
