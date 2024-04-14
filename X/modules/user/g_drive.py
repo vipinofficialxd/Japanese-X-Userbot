@@ -86,3 +86,10 @@ async def gUpload_handler(_, message: Message):
     
     __MESSAGE_LINK_TO_DRIVE_CACHE[download_message.link] = g_file['webContentLink']
     await reply.edit_text(f'File is ready to download.\n' + user.html_normal(g_file['webContentLink']))
+
+add_command_help(
+    "•─╼⃝𖠁 gUpload",
+    [
+        ["gUpload", "Tᴏ send Google drive file ɪɴ ᴛʜɪꜱ ᴄʜᴀᴛ."],
+    ],
+)
