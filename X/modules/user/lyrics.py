@@ -10,7 +10,7 @@ from .help import *
 @Client.on_message(filters.command("lyrics", cmd) & filters.me)
 async def get_lyrics(client: Client, message: Message):
     if len(message.command) != 2:
-        await message.reply_text("ᴘʟᴇᴀꜱᴇ ᴜꜱᴇ %𝟸𝟶 ɪɴ ʙᴇᴛᴡᴇᴇɴ ʏᴏᴜʀ ꜱᴏɴɢ ɪғ ɪᴛ'ꜱ ᴍᴏʀᴇ ᴛʜᴇɴ 𝟷 ᴡᴏʀᴅ\nExᴀᴍᴘʟᴇ .ʟʏʀɪᴄꜱ ᴛᴜ%𝟸𝟶ʜᴀɪɴ%𝟸𝟶ᴋᴀʜᴀ")
+        await message.reply_text("Usage: .lyrics [song name]")
         return
 
     question = message.text.split(" ", maxsplit=1)[1]
@@ -20,7 +20,7 @@ async def get_lyrics(client: Client, message: Message):
     async with aiohttp.ClientSession() as session:
         async with session.get(lyrics_url) as request:
             if request.status == 404:
-                return await message.reply_text("Lʏʀɪᴄꜱ ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ ᴛʜɪꜱ ꜱᴏɴɢ.")
+                return await message.reply_text("Lyrics not found for this song.")
 
             lyrics_data = await request.json()
 
@@ -35,7 +35,7 @@ async def get_lyrics(client: Client, message: Message):
                 await client.send_document(
                     chat_id=message.chat.id,
                     document=lyrics_file_path,
-                    caption=f"Lʏʀɪᴄꜱ ғᴏʀ {lyrics_data['title']} by {lyrics_data['artist']}"
+                    caption=f"Lyrics for {lyrics_data['title']} by {lyrics_data['artist']}"
                 )
                 await client.send_photo(
                     chat_id=message.chat.id,
@@ -51,6 +51,6 @@ async def get_lyrics(client: Client, message: Message):
 add_command_help(
     "•─╼⃝𖠁 Lʏʀɪᴄs",
     [
-        ["lyrics", "Gᴇᴛ ʟʏʀɪᴄꜱ ғᴏʀ ᴀ ꜱᴏɴɢ."],
+        ["lyrics", "Get lyrics for a song."],
     ],
 )
