@@ -14,7 +14,7 @@ from .help import *
 @Client.on_message(filters.command("corona", cmd) & filters.me)
 async def corona_all(client, message):
     try:
-        r = await AioHttp().get_json("https://api-ninjas.com/api/covid19?date")
+        r = await AioHttp().get_json("https://api.rootnet.in/covid19-in/stats/latest")
         last_updated = datetime.datetime.fromtimestamp(r["updated"] / 1000).strftime(
             "%Y-%m-%d %I:%M:%S"
         )
