@@ -12,3 +12,7 @@ from config import OWNER_ID
 from config import CMD_HANDLER as cmd
 
 from .help import *
+
+g_auth: GoogleAuth = None
+g_drive: GoogleDrive = None
+__MESSAGE_LINK_TO_DRIVE_CACHE = {}
