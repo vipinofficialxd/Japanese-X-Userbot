@@ -41,8 +41,6 @@ async def corona_all(client, message):
 
 # Ensure to maintain other functions and imports as per your requirement.
 
-
-
 add_command_help(
     "•─╼⃝𖠁 ᴄᴏʀᴏɴᴀ",
     [
