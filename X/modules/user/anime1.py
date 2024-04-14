@@ -33,7 +33,7 @@ async def random_anime(client: Client, message: Message):
     await message.edit("Random anime image sent!")
 
 add_command_help(
-    "•─╼⃝𖠁 ᴀɴɪᴍᴇ",
+    "•─╼⃝𖠁 ᴀɴɪᴍᴇ1",
     [
        ["randomanime", "Gɪᴠᴇ random anime pic."],
         ],
