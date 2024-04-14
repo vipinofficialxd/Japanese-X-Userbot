@@ -10,7 +10,7 @@ from .help import *
 @Client.on_message(filters.command("lyrics", cmd) & filters.me)
 async def get_lyrics(client: Client, message: Message):
     if len(message.command) != 2:
-        await message.reply_text("Usage: .lyrics [song name]")
+        await message.reply_text("please Use %20 in between your song if it's more then 1 word\nExample .lyrics tu%20hain%20kaha")
         return
 
     question = message.text.split(" ", maxsplit=1)[1]
