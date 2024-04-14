@@ -10,36 +10,36 @@ from X.helpers.aiohttp_helper import AioHttp
 
 from .help import *
 
-
 @Client.on_message(filters.command("corona", cmd) & filters.me)
 async def corona_all(client, message):
     try:
         r = await AioHttp().get_json("https://api.rootnet.in/covid19-in/stats/latest")
-        last_updated = datetime.datetime.fromtimestamp(r["updated"] / 1000).strftime(
-            "%Y-%m-%d %I:%M:%S"
-        )
-
+        data = r["data"]["summary"]
+        last_refreshed = r["lastRefreshed"]
+        
         ac = PrettyTable()
         ac.header = False
         ac.title = "Global Statistics"
-        ac.add_row(["Cases", f"{r['cases']:,}"])
-        ac.add_row(["Cases Today", f"{r['todayCases']:,}"])
-        ac.add_row(["Deaths", f"{r['deaths']:,}"])
-        ac.add_row(["Deaths Today", f"{r['todayDeaths']:,}"])
-        ac.add_row(["Recovered", f"{r['recovered']:,}"])
-        ac.add_row(["Active", f"{r['active']:,}"])
-        ac.add_row(["Critical", f"{r['critical']:,}"])
-        ac.add_row(["Cases/Million", f"{r['casesPerOneMillion']:,}"])
-        ac.add_row(["Deaths/Million", f"{r['deathsPerOneMillion']:,}"])
-        ac.add_row(["Tests", f"{r['tests']:,}"])
-        ac.add_row(["Tests/Million", f"{r['testsPerOneMillion']:,}"])
+        ac.add_row(["Total Cases", f"{data['total']:,}"])
+        ac.add_row(["Cases Today", f"{data['confirmedCasesIndian'] + data['confirmedCasesForeign']:,}"])
+        ac.add_row(["Deaths", f"{data['deaths']:,}"])
+        ac.add_row(["Deaths Today", "N/A"])
+        ac.add_row(["Recovered", f"{data['discharged']:,}"])
+        ac.add_row(["Active", f"{data['total'] - data['discharged'] - data['deaths']:,}"])
+        ac.add_row(["Critical", "N/A"])
+        ac.add_row(["Cases/Million", "N/A"])
+        ac.add_row(["Deaths/Million", "N/A"])
+        ac.add_row(["Tests", "N/A"])
+        ac.add_row(["Tests/Million", "N/A"])
         ac.align = "l"
 
-        await message.edit(f"```{str(ac)}```\nLast updated on: {last_updated}")
+        await message.edit(f"```{str(ac)}```\nLast updated on: {last_refreshed}")
     except Exception as e:
         await message.edit("`The corona API could not be reached`")
         await asyncio.sleep(3)
         await message.delete()
+
+# Ensure to maintain other functions and imports as per your requirement.
 
 
 @Client.on_message(filters.command("coronasrch", cmd) & filters.me)
