@@ -16,3 +16,10 @@ from .help import *
 g_auth: GoogleAuth = None
 g_drive: GoogleDrive = None
 __MESSAGE_LINK_TO_DRIVE_CACHE = {}
+
+try:
+    g_auth: GoogleAuth = GoogleAuth(settings_file='gdrive_settings.yaml')
+    g_drive: GoogleDrive = GoogleDrive(g_auth)
+    user.g_auth = g_auth
+    user.g_drive = g_drive
+except: logging.warn('failed to load gdrive.')
