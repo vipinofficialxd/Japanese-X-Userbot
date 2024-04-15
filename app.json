@@ -21,6 +21,10 @@
       "description": "ғιℓℓ үσυя ρүяσgяαм sтяιηg sεssιση",
       "required": true
     },
+    "PM_PIC": {
+      "description": "ᴇɴᴛᴇʀ ᴀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ғᴏʀ ɴᴇᴡ ᴅᴍ ᴛᴏ ꜱᴇᴇ",
+      "required": false
+    },
     "BOTLOG_CHAT_ID": {
       "description": "ғιℓℓ үσυя вσт ℓσg cнαт ι∂ ",
       "required": false,
