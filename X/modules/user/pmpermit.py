@@ -1,10 +1,11 @@
 from pyrogram import Client, filters
 from X.Database.pm import *
 from X.powers import get_id
-
+import os
+from os import getenv
 hl = "."
 pm_watcher = 5
-PM_PIC = "https://graph.org/file/936ef33023a77fa9a6813.jpg"
+PM_PIC = getenv("PM_PIC", "https://graph.org/file/936ef33023a77fa9a6813.jpg")
 
 TEXT = """
 •            **[𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄 𝐗 𝐔𝐒𝐄𝐑𝐁𝐎𝐓](https://github.com/Team-Japanese/Japanese-X-Userbot)**
