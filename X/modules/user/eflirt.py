@@ -35,8 +35,8 @@ async def eflirt(x: Client, e: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 eflirt",
+    "•─╼⃝𖠁 Eғʟɪʀᴛ",
     [
-        ["eflirt", "Tᴏ ꜱᴇɴᴅ flirt message."],
+        ["eflirt", "Tᴏ ꜱᴇɴᴅ ғʟɪʀᴛ Mᴇssᴀɢᴇs."],
     ],
 )
