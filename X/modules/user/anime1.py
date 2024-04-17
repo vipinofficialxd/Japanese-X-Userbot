@@ -7,7 +7,7 @@ from config import CMD_HANDLER as cmd
 
 from .help import * 
 
-API_URL = "https://api.nekosapi.com/v2/images/random"
+API_URL = "https://api.nekosapi.com/v3/images/random"
 
 
 @Client.on_message(filters.command("randomanime", cmd) & filters.me)
