@@ -1,8 +1,6 @@
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
-# Assuming you have defined your bot and its CMD_HANDLER in config.py
 from config import CMD_HANDLER as cmd
 
 from .help import * 
