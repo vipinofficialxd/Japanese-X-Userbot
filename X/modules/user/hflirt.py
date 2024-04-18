@@ -12,7 +12,7 @@ async def hflirt(x: Client, e: Message):
       NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
       if len(NOBI) == 2:
-          ok = await x.get_users(kex[1])
+          ok = await x.get_users(NOBI[1])
           counts = int(NOBI[0])
           for _ in range(counts):
                 reply = choice(HFLIRT)
