@@ -35,8 +35,8 @@ async def emoji(x: Client, e: Message):
 
 
 add_command_help(
-    "•─╼⃝𖠁 emoji ",
+    "•─╼⃝𖠁 Eᴍᴏᴊɪ ",
     [
-        ["emoji", "Tᴏ ꜱᴇɴᴅ emoji Mᴇssᴀɢᴇs."],
+        ["emoji", "Tᴏ ꜱᴇɴᴅ Eᴍᴏᴊɪ Mᴇssᴀɢᴇs."],
     ],
 )
