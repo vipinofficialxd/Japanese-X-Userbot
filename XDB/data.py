@@ -1,4 +1,4 @@
-#kexx (Kunal)
+#kexx (⌯ Kᴜɴᴀʟ࿐ 🕊)
 
 MASTERS = [6694740726]
 
