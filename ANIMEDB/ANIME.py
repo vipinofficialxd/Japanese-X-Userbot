@@ -20,12 +20,3 @@ NEZUKO = [
 ]
 
 KAMADOXTANJIROU= [
-  
-  "https://graph.org/file/a37260cf11ade7588a3d0.jpg",
-  "https://graph.org/file/27339bbb47baccfd670a8.jpg",
-  "https://graph.org/file/640b2942a51d3d909d228.jpg",
-  "https://graph.org/file/bdb9372caac7e2dc38563.jpg",
-  "https://graph.org/file/d82743c88bd36bc09fc74.jpg",
-  "https://graph.org/file/0fe8c70df4e5a27be3983.jpg",
-  "https://graph.org/file/a7882bc873fe7264e139d.jpg",
-]
