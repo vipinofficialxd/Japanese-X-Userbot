@@ -18,5 +18,3 @@ NEZUKO = [
   "https://telegra.ph/file/c13d1de9fa933c8fed7b7.jpg",
   "https://telegra.ph/file/6f41d905efae9ae332ec4.jpg",
 ]
-
-KAMADOXTANJIROU= [
