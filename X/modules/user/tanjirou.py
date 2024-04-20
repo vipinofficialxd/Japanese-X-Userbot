@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from pyrogram import filters, Client
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
-from ANIMEDB.ANIME import KAMADOXTANJIROU=
+from ANIMEDB.ANIME import KAMADOXTANJIROU
 from .help import *
 
 @Client.on_message(filters.command("tanjirou", cmd) & filters.me)
