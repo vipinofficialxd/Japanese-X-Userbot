@@ -1,1 +1,6 @@
-#Soonnn
+#CREDIT 
+#NOBITA_XD #KUNAL #MIRZA #TRYTOLIVEALONE 
+
+KANGER #Updatw soon 
+  
+        
