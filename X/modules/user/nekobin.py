@@ -1,3 +1,8 @@
+# Credits: Athfan Khaleel
+# Copyright (C) https://github.com/athphane/userbot
+#
+
+
 import asyncio
 
 import aiohttp
