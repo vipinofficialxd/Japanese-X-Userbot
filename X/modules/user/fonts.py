@@ -1,3 +1,10 @@
+# Credit 
+# @Rizzvbss | @Whynan
+# How come?
+# © @KynanSupport
+# REMAKE BY NOBITA XD AND TRYTOLIVEALONE
+
+
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from X import *
