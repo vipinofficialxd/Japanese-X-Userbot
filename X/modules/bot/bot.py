@@ -1,3 +1,8 @@
+#Credit Bye Geez|Ram
+#Thanks To All Dev
+
+
+
 import traceback
 
 from pyrogram import Client, filters
