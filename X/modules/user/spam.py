@@ -1,3 +1,12 @@
+# Credits: NOBITA XD AND KUNAL 
+# Copyright (C) 2024 JAPANESE X USERBOT AND STORM USERBOT 
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
 import asyncio
 from threading import Event
 
