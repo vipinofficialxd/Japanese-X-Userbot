@@ -1,3 +1,12 @@
+# Credits: NOBITA XD  AND TRYTOLIVEALONE 
+# Copyright (C) 2024 JAPANESE X USERBOT 
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram import Client as kaz
