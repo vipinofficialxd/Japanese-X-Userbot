@@ -1,3 +1,10 @@
+# Credit 
+# @Rizzvbss | @Whynan
+# How come?
+# © @KynanSupport
+# REMAKE BY : NOBITA XD AND TRYTOLIVEALONE
+
+
 import asyncio
 import random
 from pyrogram import Client, filters
