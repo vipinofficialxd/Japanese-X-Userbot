@@ -1,3 +1,12 @@
+#CREDIT: NOBITA XD 
+# COPYRIGHT BY JAPANESE X USERBOT 2024 
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
 import asyncio
 from random import choice
 from pyrogram.types import Message
