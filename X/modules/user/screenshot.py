@@ -1,3 +1,9 @@
+# Credits: Athfan Khaleel
+# Copyright (C) https://github.com/athphane/userbot
+#REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
+
+
+
 import asyncio
 
 from pyrogram import Client, filters
