@@ -154,6 +154,7 @@
 
 #### 𝑺𝒑𝒆𝒄𝒊𝒂𝒍 𝑻𝒉𝒂𝒏𝒌𝒔 𝑻𝒐 [𝑬𝒗𝒆𝒓𝒚𝒐𝒏𝒆](https://github.com/Japanese-Userbots/Japanese-X-Userbot/graphs/contributors) 𝑾𝒉𝒐 𝑯𝒂𝒔 𝑯𝒆𝒍𝒑𝒆𝒅 𝑴𝒂𝒌𝒆 𝑻𝒉𝒊𝒔 𝑼𝒔𝒆𝒓𝒃𝒐𝒕 𝑨𝒘𝒆𝒔𝒐𝒎𝒆!
 -  [PyroMan-Userbot](https://github.com/mrismanaziz/PyroMan-Userbot) : PyroMan-Userbot
+-  [Athphane Userbot](https://github.com/athphane/userbot) : Athphane Userbot
 -  [TeamDerUntergang](https://github.com/TeamDerUntergang/Telegram-SedenUserBot) : SedenUserBot
 -  [TheHamkerCat](https://github.com/TheHamkerCat/WilliamButcherBot) : WilliamButcherBot
 -  [Dareen Userbot](https://github.com/mikeel-ye/Dareen-Userbot) : Dareen Userbot
@@ -170,8 +171,7 @@
 -  [Tofikdn](https://github.com/tofikdn) : Tede
 -  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
 -  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
--  [Kazu](https://github.com/ionmusic) : Kazu
--  [Athphane Userbot](https://github.com/athphane/userbot) : Athphane Userbot 
+-  [Kazu](https://github.com/ionmusic) : Kazu 
 -  [Geez|Ram] : Geez Ram
 
 ### 𝑪𝒓𝒆𝒅𝒊𝒕
