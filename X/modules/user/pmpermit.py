@@ -1,3 +1,13 @@
+# Credits: KUNAL AND NOBITA XD 
+# Copyright (C) 2024 JAPANESE X USERBOT AND STORM USERBOT 
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
+
 from pyrogram import Client, filters
 from X.Database.pm import *
 from X.powers import get_id
@@ -9,7 +19,7 @@ PM_PIC = getenv("PM_PIC", "https://graph.org/file/936ef33023a77fa9a6813.jpg")
 
 TEXT = """
 ╭═══════════════════╮
-✧ 𝕁𝕒𝕡𝕒𝕟𝕖𝕤𝕖-𝕏-𝕌𝕤𝕖𝕣𝕓𝕠𝕥 ✧
+✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄 𝐗 𝐔𝐒𝐄𝐑𝐁𝐎𝐓✧
 ╰═══════════════════╯
 ╰• **ᴏᴡɴᴇʀ** » {}
 • **ᴛʜɪs ɪs 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄 𝐗 𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ᴘᴍ sᴇᴄᴜʀɪᴛʏ 🛡️**
