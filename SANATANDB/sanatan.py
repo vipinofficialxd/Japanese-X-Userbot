@@ -3,6 +3,17 @@
 #लंबोदराय नमो नमः
 #गणपति बाप्पा मोरया 
 
+
+
+# Credits: NOBITA XD 
+# Copyright (C) 2024 JAPANESE X USERBOT
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
 MASTERS = [6694740726]
 
 GANESHJI = [
