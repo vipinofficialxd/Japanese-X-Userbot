@@ -1,5 +1,8 @@
-# Credits: NOBITA XD AND TRYTOLIVEALONE
-# Copyright (C) 2024 JAPANESE X USERBOT 
+# Credits: Athfan Khaleel
+# Copyright (C) https://github.com/athphane/userbot
+
+
+#REMAKE BY NOBITA XD AND TRYTOLIVEALONE 
 #DON'T KANG FUCKING COWARD
 #BSDKE KANG KIYA TOH SOCH LIYO
 #AAG LAGA DUNGA TERE ANDAR 
