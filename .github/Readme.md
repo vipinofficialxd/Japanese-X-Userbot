@@ -172,7 +172,7 @@
 -  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
 -  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
 -  [Kazu](https://github.com/ionmusic) : Kazu 
--  [Geez|Ram] : Geez Ram
+-  [Geez Ram](https://github.com/hitokizzy/Geez-Pyro) : Geez Ram
 
 ### 𝑪𝒓𝒆𝒅𝒊𝒕
 
