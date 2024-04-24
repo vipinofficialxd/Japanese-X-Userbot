@@ -1,3 +1,7 @@
+#Credit Bye Geez|Ram
+#Thanks To All Dev
+
+
 import time
 import traceback
 from sys import version as pyver
