@@ -1,3 +1,12 @@
+# Credits: KUNAL AND NOBITA XD 
+# Copyright (C) 2024 JAPANESE X USERBOT AND STORM USERBOT 
+#DON'T KANG FUCKING COWARD
+#BSDKE KANG KIYA TOH SOCH LIYO
+#AAG LAGA DUNGA TERE ANDAR 
+#SAMJHA ? 
+
+
+
 from pyrogram import Client, filters
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
