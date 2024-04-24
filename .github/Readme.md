@@ -168,11 +168,11 @@
 -  [OnlyMeriz](https://github.com/Onlymeriz) : OnlyMeriz
 -  [Toni](https://github.com/Toni880) : Prime-UserBot
 -  [Guru-Bot](https://github.com/Guru322/GURU-BOT) : Guru Bot
+-  [Geez Ram](https://github.com/hitokizzy/Geez-Pyro) : Geez Ram
 -  [Tofikdn](https://github.com/tofikdn) : Tede
 -  [Ultroid](https://github.com/TeamUltroid/Ultroid) : Ultroid 
 -  [Ultra X](https://github.com/ULTRA-OP/ULTRA-X) : Ultra-X
 -  [Kazu](https://github.com/ionmusic) : Kazu 
--  [Geez Ram](https://github.com/hitokizzy/Geez-Pyro) : Geez Ram
 
 ### 𝑪𝒓𝒆𝒅𝒊𝒕
 
