@@ -92,7 +92,7 @@
 </p>
 
 <p align="center" >
-    <a href="https://app.koyeb.com/apps/deploy?type=git&repository=github.com/https://github.com/Team-Japanese/Japanese-X-Userbot&branch=main&build_command=npm%20i&run_command=npm%20start&env[SESSION_ID]&env[OWNER_ID]&env[MONGODB_URI]&&env[OWNER_NAME]&env[PREFIX]=.&env[THUMB_IMAGE]=https://telegra.ph/file/3c341828d86ee7a89c73f.jpg&env[email]=infiniteytff@gmail.com&env[global_url]=instagram.com/sla.sher_&env[FAKE_COUNTRY_CODE]=974&env[READ_MESSAGE]=false&env[DISABLE_PM]=false&env[ANTI_BAD_WORD]=fuck&env[WORKTYPE]=public&env[THEME]=GOJO&env[PACK_INFO]=XLICON;MD&name=xliconuser000&env[KOYEB_NAME]=profilecorruptederror&env[ANTILINK_VALUES]=chat.telegram.com&env[PORT]=8000">
+    <a href="https://app.koyeb.com/apps/deploy?type=git&repository=github.com/https://github.com/Team-Japanese/Japanese-X-Userbot&branch=main
     <img src="https://www.koyeb.com/static/images/deploy/button.svg" width="170px" alt="Deploy on Koyeb" >
     </a>
 
