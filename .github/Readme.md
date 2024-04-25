@@ -84,20 +84,6 @@
     <img src="https://img.shields.io/badge/DEPLOY CODESPACE-h?color=black&style=for-the-badge&logo=visualstudiocode" width="220px" height="38.45" alt="Deploy on CodesSpaces" >
     </a>
 
-## 𝑫𝒆𝒑𝒍𝒐𝒚 𝑻𝒐 𝑲𝒐𝒚𝒆𝒃
-
-<h4 align="center"> Deploy On Koyeb
-</h4>
-
-</p>
-
-<p align="center" >
-    <a href="https://app.koyeb.com/apps/deploy?type=git&repository=github.com/https://github.com/Team-Japanese/Japanese-X-Userbot&branch=main
-        
-   <img src="https://www.koyeb.com/static/images/deploy/button.svg" width="170px" alt="Deploy on Koyeb">
-    </a>
-
-
 
 
 ## 𝑫𝒆𝒑𝒍𝒐𝒚 𝒐𝒏 𝑴𝒐𝒈𝒆𝒏𝒊𝒖𝒔
