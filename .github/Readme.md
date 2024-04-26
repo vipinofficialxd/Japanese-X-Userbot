@@ -150,7 +150,7 @@
 -  [Ayiin Userbot](https://github.com/AyiinXd/Ayiin-Userbot) : Ayiin Userbot
 -  [King Userbot](https://github.com/apisuserbot/King-Userbot) : King Userbot
 -  [TeamYukki](https://github.com/TeamYukki/YukkiMusicBot) : YukkiMusicBot
--  [ITZ-ZAID](https://github.com/ITZ-ZAID) : Zaid-UserBot
+-  [ITZ-ZAID](https://github.com/ITZ-ZAID/ZAID-USERBOT) : Zaid-UserBot
 -  [Risman](https://github.com/mrismanaziz) : PyroMan-Userbot
 -  [OnlyMeriz](https://github.com/Onlymeriz) : OnlyMeriz
 -  [Toni](https://github.com/Toni880) : Prime-UserBot
