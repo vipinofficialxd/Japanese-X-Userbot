@@ -38,6 +38,10 @@
       "description": "ғιℓℓ үσυя нεяσкυ αρρ ηαмε",
       "required": false
     }
+    "MONGO_URL": {
+      "description": "MONGO DB URL",
+      "required": true
+    },
   },
   "addons": [
     {
