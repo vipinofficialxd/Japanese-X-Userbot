@@ -1,41 +1,40 @@
 {
-  "name": "𝑱𝒂𝒑𝒂𝒏𝒆𝒔𝒆-𝑿-𝑼𝒔𝒆𝒓𝒃𝒐𝒕",
-  "description": "[𝑱𝒂𝒑𝒂𝒏𝒆𝒔𝒆-𝑿-𝑼𝒔𝒆𝒓𝒃𝒐𝒕] ωσяℓ∂ ℓαяgεsт αη∂ ғαsтεsт υsεявσт. ρσωεяε∂ вү 𝑱𝒂𝒑𝒂𝒏𝒆𝒔𝒆-𝑿-𝑼𝒔𝒆𝒓𝒃𝒐𝒕.",
-    "logo": "https://graph.org/file/ec99cb6dba229bd984537.jpg",
-
+  "name": "Japanese-X-Userbot",
+  "description": "[Japanese-X-Userbot] world's largest and fastest userbot. Powered by Japanese-X-Userbot.",
+  "logo": "https://graph.org/file/ec99cb6dba229bd984537.jpg",
   "stack": "heroku-22",
   "env": {
     "BOT_TOKEN": {
-      "description": "gεт тнιs ғяσм вσтғαтнεя",
+      "description": "Get this from BotFather",
       "required": true
     },
     "OWNER_ID": {
-      "description": "ᴘᴀsᴛᴇ ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ ʜᴇʀᴇ",
+      "description": "Paste your Telegram ID here",
       "required": true
     },
     "OWNER": {
-      "description": "ʏᴏᴜʀ ᴏʀɢɪɴᴀʟ ɴᴀᴍᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ",
+      "description": "Your original name on Telegram",
       "required": true
     },
     "STRING_SESSION1": {
-      "description": "ғιℓℓ үσυя ρүяσgяαм sтяιηg sεssιση",
+      "description": "Fill your Pyrogram string session",
       "required": true
     },
     "PM_PIC": {
-      "description": "ᴇɴᴛᴇʀ ᴀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ғᴏʀ ɴᴇᴡ ᴅᴍ ᴛᴏ ꜱᴇᴇ",
+      "description": "Enter a Telegraph link for new DM to see",
       "required": false
     },
     "BOTLOG_CHAT_ID": {
-      "description": "ғιℓℓ үσυя вσт ℓσg cнαт ι∂ ",
+      "description": "Fill your bot log chat ID",
       "required": false,
       "value": "-100"
     },
     "HEROKU_API_KEY": {
-      "description": "ғιℓℓ үσυя нεяσкυ αρι кεү gεт тнιs ғяσм » https://dashboard.heroku.com/account",
+      "description": "Fill your Heroku API key get this from » https://dashboard.heroku.com/account",
       "required": false
     },
     "HEROKU_APP_NAME": {
-      "description": "ғιℓℓ үσυя нεяσкυ αρρ ηαмε",
+      "description": "Fill your Heroku app name",
       "required": false
     },
     "MONGO_URL": {
