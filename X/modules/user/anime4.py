@@ -17,10 +17,12 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from config import CMD_HANDLER as cmd
+from anime_api.apis import NekosAPI
+ 
 
 from .help import * 
 
-API_URL = "https://api.nekosapi.com/v3/images/17"
+NekosAPI = "https://api.nekosapi.com/v3/images/17"
 
 
 @Client.on_message(filters.command("anime4", cmd) & filters.me)
@@ -30,11 +32,20 @@ async def anime4(client: Client, message: Message):
 
     # Make the API request
     try:
-        response = requests.get(API_URL)
+        response = requests.get(NekosAPI)
         response.raise_for_status()
         data = response.json()["data"]["attributes"]
         image_url = data["file"]
         title = data["title"]
+        nekos = NekosAPI()
+ 
+# The categories argument is optional. If not specified, the images will be
+# completely random (no specific category)
+images = nekos.get_random_images(limit=10, categories=["kemonomimi"])
+ 
+    for image in images:
+    print(image.url)
+    
     except (requests.exceptions.RequestException, KeyError):
         await message.edit("Failed to fetch a random anime image.")
         return
