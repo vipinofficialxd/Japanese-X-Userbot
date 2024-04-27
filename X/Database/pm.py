@@ -1,53 +1,73 @@
-pm_data = {"pm": 0}
-pmwarn_data = {"w": "w", "warns": 10}
-pmap_data = []
-warner_data = {}
+from X.Database import db
+
+pmdb = db.pm
+pmwarn = db.pmwarn
+pmap = db.pmapprove
+warner = db.warner
 
 async def toggle_pm():
-    global pm_data
-    if pm_data:
-        pm_data = {}
+    x = await pmdb.find_one({"pm": 0})
+    if x:
+        return await pmdb.delete_one({"pm": 0})
     else:
-        pm_data = {"pm": 0}
+        return await pmdb.insert_one({"pm": 0})
 
 async def is_pm_on():
-    global pm_data
-    return bool(pm_data)
+    x = await pmdb.find_one({"pm": 0})
+    if x:
+        return True
+    return False
 
 async def update_warns(w: int):
-    global pmwarn_data
-    pmwarn_data["warns"] = w
+    await pmwarn.update_one({"w": "w"}, {"$set": {"warns": w}}, upsert=True)
 
 async def limit():
-    global pmwarn_data
-    return pmwarn_data.get("warns", 0)
+    x = await pmwarn.find_one({"w": "w"})
+    if not x:
+        return 0
+    return x["warns"]
 
 async def approve(user_id: int):
-    global pmap_data
-    if user_id not in pmap_data:
-        pmap_data.append(user_id)
+    x = await pmap.find_one({"user_id": user_id})
+    if x:
+        return
+    await pmap.insert_one({"user_id": user_id})
 
 async def disapprove(user_id: int):
-    global pmap_data
-    if user_id in pmap_data:
-        pmap_data.remove(user_id)
+    x = await pmap.find_one({"user_id": user_id})
+    if not x:
+        return
+    await pmap.delete_one({"user_id": user_id})
 
 async def is_approved(user_id: int):
-    global pmap_data
-    return user_id in pmap_data
+    x = await pmap.find_one({"user_id": user_id})
+    if x:
+        return True
+    return False
 
 async def list_approved():
-    global pmap_data
-    return pmap_data
+    x = pmap.find({"user_id": {"$gt": 0}})
+    if not x:
+        return []
+    g = []
+    for h in await x.to_list(length=1000000000):
+        g.append(h["user_id"])
+    return g
 
 async def add_warn(user_id: int):
-    global warner_data
-    warner_data[user_id] = warner_data.get(user_id, 0) + 1
+    x = await warner.find_one({"user_id": user_id})
+    if x:
+        l = x["warns"]
+        l += 1
+        return await warner.update_one({"user_id": user_id}, {"$set": {"warns": l}}, upsert=True)
+    return await warner.update_one({"user_id": user_id}, {"$set": {"warns": 1}}, upsert=True)
 
 async def reset_warns(user_id: int):
-    global warner_data
-    warner_data[user_id] = 0
+    return await warner.update_one({"user_id": user_id}, {"$set": {"warns": 0}}, upsert=True)
 
 async def get_warns(user_id: int):
-    global warner_data
-    return warner_data.get(user_id, 0)
+    x = await warner.find_one({"user_id": user_id})
+    if x:
+        l = x["warns"]
+        return l
+    return 0
