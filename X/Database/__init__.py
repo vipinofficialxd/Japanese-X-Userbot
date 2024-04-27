@@ -1,6 +1,6 @@
-from config import DB_URL
+from config import MONGO_URL
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
-mongo = MongoClient(DB_URL)
+mongo = MongoClient(MONGO_URL)
 
 db = mongo.Ubot
