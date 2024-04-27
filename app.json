@@ -41,7 +41,7 @@
     "MONGO_URL": {
       "description": "MONGO DB URL",
       "required": true
-    },
+    }
   },
   "addons": [
     {
