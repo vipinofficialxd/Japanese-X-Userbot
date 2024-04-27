@@ -1,21 +1,12 @@
-# Credits: KUNAL, TRYTOLIVEALONE AND NOBITA XD 
-# Copyright (C) 2024 JAPANESE X USERBOT AND STORM USERBOT 
-#DON'T KANG FUCKING COWARD
-#BSDKE KANG KIYA TOH SOCH LIYO
-#AAG LAGA DUNGA TERE ANDAR 
-#SAMJHA ? 
-
-
-
-
 from pyrogram import Client, filters
 from X.Database.pm import *
 from X.powers import get_id
-import os
-from os import getenv
+from config import PM_PIC
+
 hl = "."
+
+JPX = PM_PIC
 pm_watcher = 5
-PM_PIC = getenv("PM_PIC", "https://graph.org/file/936ef33023a77fa9a6813.jpg")
 
 TEXT = """
 ╭═══════════════════╮
@@ -34,6 +25,7 @@ TEXT = """
 •
 ╰───❰ [ᴍᴀᴋᴇ ᴍᴇ ʏᴏᴜʀs](https://github.com/Team-Japanese/Japanese-X-Userbot) ❱
 """
+
 @Client.on_message(filters.command("pmpermit", hl) & filters.me)
 async def pmpermit(client, message):
     x = await is_pm_on()
@@ -45,13 +37,13 @@ async def pmpermit(client, message):
         return await message.edit(f"{hl}pmpermit [on | off]")
     if tg == "on":
         if x:
-            return await message.edit("ᴘᴍᴘᴇʀᴍɪᴛ ᴀʟʀᴇᴀᴅʏ ᴇɴᴀʙʟᴇᴅ....")
+            return await message.edit("ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀꜱᴇ ᴘᴍᴘᴇʀᴍɪᴛ ᴀʟʀᴇᴀᴅʏ ᴇɴᴀʙʟᴇᴅ...")
         await toggle_pm()
         if await limit() == 0:
             await update_warns(3)
-        return await message.edit("ᴘᴍᴘᴇʀᴍɪᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴇɴᴀʙʟᴇᴅ....")
+        return await message.edit("ᴘᴍᴘᴇʀᴍɪᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴇɴᴀʙʟᴇᴅ...")
     if not x:
-        return await message.edit("ᴘᴍᴘᴇʀᴍɪᴛ ɪꜱ ɴᴏᴛ ᴇɴᴀʙʟᴇᴅ....")
+        return await message.edit("ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴅᴀᴛᴀʙᴀꜱᴇ ᴘᴍᴘᴇʀᴍɪᴛ ɪꜱ ɴᴏᴛ ᴇɴᴀʙʟᴇᴅ...")
     await toggle_pm()
     return await message.edit("ᴘᴍᴘᴇʀᴍɪᴛ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅɪꜱᴀʙʟᴇᴅ....")
 
@@ -68,11 +60,11 @@ async def appr_dis(client, message):
     x = await is_approved(id)
     if tg == "d":
         if not x:
-            return await message.edit("ᴛʜɪꜱ ᴜꜱᴇʀ ɪꜱ ɴᴏᴛ ᴀᴘᴘʀᴏᴠᴇᴅ..")
+            return await message.edit("ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴅᴀᴛᴀʙᴀꜱᴇ ᴛʜɪꜱ ᴜꜱᴇʀ ɪꜱ ɴᴏᴛ ᴀᴘᴘʀᴏᴠᴇᴅ....")
         await disapprove(id)
         return await message.edit("ᴜꜱᴇʀ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅɪꜱᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ....")
     if x:
-        return await message.edit("ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀꜱᴇ ᴜꜱᴇʀ ᴀʟʀᴇᴀᴅʏ ᴀᴘᴘʀᴏᴠᴇᴅ....")
+        return await message.edit("ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴅᴀᴛᴀʙᴀꜱᴇ ᴜꜱᴇʀ ᴀʟʀᴇᴀᴅʏ ᴀᴘᴘʀᴏᴠᴇᴅ...")
     await approve(id) 
     await reset_warns(id)
     return await message.edit("ᴜꜱᴇʀ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴀᴘᴘʀᴏᴠᴇᴅ ᴛᴏ ᴘᴍ....")
@@ -84,7 +76,7 @@ async def setwarn(client, message):
     except:
         return await message.edit(f"{hl}setwarns [ᴠᴀʟᴜᴇ]")
     if count == 0:
-        return await message.edit("ɢɪᴠᴇ ᴍᴇ ᴠᴀʟᴜᴇ ᴛᴏ ꜱᴇᴛ ᴡᴀʀɴꜱ..")
+        return await message.edit("ɢɪᴠᴇ ᴍᴇ ɴᴜᴍᴇʀɪᴄᴀʟ ᴠᴀʟᴜᴇ ᴛᴏ ꜱᴇᴛ ᴡᴀʀɴꜱ..")
     await update_warns(count)
     await message.edit(f"ᴅᴍ ᴡᴀʀɴꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ꜱᴇᴛ ᴛᴏ {count}..")
     
@@ -101,7 +93,7 @@ async def wtch(client, message):
         return
     await add_warn(message.from_user.id)
     if await limit() <= await get_warns(message.from_user.id):
-        await message.reply("ꜱᴘᴀᴍᴍᴇʀ ᴅᴇᴛᴇᴄᴛᴇᴅ ᴀɴᴅ ʙʟᴏᴄᴋᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ.....")
+        await message.reply("ꜱᴘᴀᴍᴍᴇʀ ᴅᴇᴛᴇᴄᴛᴇᴅ ᴀɴᴅ ʙʟᴏᴄᴋᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ....")
         await reset_warns(message.from_user.id)
         return await client.block_user(message.from_user.id)
-    await message.reply_photo(PM_PIC, caption=TEXT.format((await client.get_me()).first_name, await limit(), await get_warns(message.from_user.id)))
+    await message.reply_photo(JPX, caption=TEXT.format((await client.get_me()).first_name, await limit(), await get_warns(message.from_user.id)))
