@@ -78,16 +78,16 @@ async def alip(client: Client, message: Message):
     uptime = await get_readable_time((time.time() - StartTime))
     man = (
         f"<b>{alive_text}</b>\n\n"
-        f"<b>•─╼⃝𖠁 𝚂𝚈𝚂𝚃𝙴𝙼 𝚂𝚃𝙰𝚃𝚄𝚂 </b>\n\n"
-        f"{emoji} <b>𝙼𝚈 𝙼𝙰𝚂𝚃𝙴𝚁:</b> [{client.me.mention}](tg://user?id={OWNER_ID}) \n\n"
-        f"{emoji} <b>𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼 𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{versipyro}</code>\n"
-        f"{emoji} <b>𝙱𝙾𝚃 𝚄𝙿𝚃𝙸𝙼𝙴:</b> <code>{uptime}</code> \n"
-        f"{emoji} <b>𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{BOT_VER}</code> \n"
-        f"{emoji} <b>𝙼𝙾𝙳𝚄𝙻𝙴𝚂:</b> <code>{len(modules)} Modules</code> \n"
-        f"{emoji} <b>𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽:</b> <code>{python_version()}</code> \n"
-        f"{emoji} <b>𝙶𝚁𝙾𝚄𝙿 :</b> [𝚂𝚄𝙿𝙿𝙾𝚁𝚃](https://t.me/Japanese_Userbot_Support)** \n"
-        f"{emoji} <b>𝙲𝙷𝙰𝙽𝙽𝙴𝙻:<b> [𝚄𝙿𝙳𝙰𝚃𝙴𝚂](https://t.me/Japanese_Userbot)** \n"
-        f"{emoji} <b>[𝙳𝙴𝙿𝙻𝙾𝚈](http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot) 𝚈𝙾𝚄𝚁 𝙾𝚆𝙽 [𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓](http://github.com/Team-Japanese/Japanese-X-Userbot) ✧\n"
+        f"<b>•─╼⃝𖠁 𝐒ʏꜱᴛᴇ𝐌 𝐒ᴛᴀᴛᴜ𝐒 </b>\n\n"
+        f"{emoji} <b>𝐌ʏ 𝐌ᴀꜱᴛᴇ𝐑:</b> [{client.me.mention}](tg://user?id={OWNER_ID}) \n\n"
+        f"{emoji} <b>𝐏ʏʀᴏɢʀᴀ𝐌 𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{versipyro}</code>\n"
+        f"{emoji} <b>𝐁ᴏᴛ 𝐔ᴘᴛɪᴍ𝐄:</b> <code>{uptime}</code> \n"
+        f"{emoji} <b>𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{BOT_VER}</code> \n"
+        f"{emoji} <b>𝐌ᴏᴅᴜʟᴇ𝐒:</b> <code>{len(modules)} Modules</code> \n"
+        f"{emoji} <b>𝐏ʏᴛʜᴏ𝐍 𝐕ᴇʀꜱɪᴏ𝐍:</b> <code>{python_version()}</code> \n"
+        f"{emoji} <b>𝐆ʀᴏᴜ𝐏 :</b> [𝐒ᴜᴘᴘᴏʀ𝐓](https://t.me/Japanese_Userbot_Support)** \n"
+        f"{emoji} <b>𝐂ʜᴀɴɴᴇʟ:<b> [𝐔ᴘᴅᴀᴛᴇ𝐒](https://t.me/Japanese_Userbot)** \n"
+        f"{emoji} <b>[𝐃ᴇᴘʟᴏʏ](http://dashboard.heroku.com/new?template=https://github.com/Team-Japanese/Japanese-X-Userbot) 𝐘ᴏᴜʀ 𝐎ᴡɴ [𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓](http://github.com/Team-Japanese/Japanese-X-Userbot) ✧\n"
         
     )
     try:
