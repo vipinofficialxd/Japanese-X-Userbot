@@ -45,7 +45,9 @@ from X.helpers.parser import mention_html, mention_markdown
 from .help import *
 
 
-@Client.on_message(filters.me & filters.command(["admins", "adminlist"], cmd))
+@Client.on_message(
+    filters.command(["admin", "adminlist"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def adminlist(client: Client, message: Message):
     replyid = None
     toolong = False
