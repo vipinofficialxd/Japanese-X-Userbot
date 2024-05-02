@@ -39,7 +39,7 @@ import html
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from config import CMD_HANDLER
+from config import OWNER_ID, SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.parser import mention_html, mention_markdown
 from .help import *
