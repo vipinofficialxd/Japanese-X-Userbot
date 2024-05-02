@@ -46,7 +46,7 @@ from .help import *
 
 
 @Client.on_message(
-    filters.command(["admin", "adminlist"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.command(["admins", "adminlist"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def adminlist(client: Client, message: Message):
     replyid = None
