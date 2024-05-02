@@ -39,15 +39,13 @@ import html
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
-from config import OWNER_ID, SUDO_USERS
+from config import CMD_HANDLER
 from X.helpers.basic import edit_or_reply
 from X.helpers.parser import mention_html, mention_markdown
 from .help import *
 
 
-@Client.on_message(
-    filters.command(["admins", "adminlist"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["admins", "adminlist"], cmd))
 async def adminlist(client: Client, message: Message):
     replyid = None
     toolong = False
