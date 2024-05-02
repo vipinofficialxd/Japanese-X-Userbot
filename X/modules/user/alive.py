@@ -50,7 +50,7 @@ from pyrogram.types import Message
 from telegraph import exceptions, upload_file
 
 from config import BOT_VER, CHANNEL
-from config import CMD_HANDLER, SUDO_USERS
+from config import CMD_HANDLER
 from config import GROUP, OWNER_ID
 from X import CMD_HELP, StartTime
 from X.helpers.basic import edit_or_reply
@@ -71,9 +71,7 @@ emoji = gvarstatus("ALIVE_EMOJI") or "✧"
 alive_text = gvarstatus("ALIVE_TEKS_CUSTOM") or "✧✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 ✧✧"
 
 
-@Client.on_message(
-    filters.command(["alive", "japan"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
 async def alip(client: Client, message: Message):
     X = await edit_or_reply(message, "🌸")
     await asyncio.sleep(2)
