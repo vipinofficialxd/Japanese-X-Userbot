@@ -37,7 +37,7 @@ import time
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import CMD_HANDLER
+from config import CMD_HANDLER, SUDO_USERS
 from X import BOTLOG_CHATID
 from X.helpers.msg_types import Types, get_message_type
 from X.helpers.parser import escape_markdown, mention_markdown
@@ -50,7 +50,9 @@ AFK_RESTIRECT = {}
 DELAY_TIME = 3  # seconds
 
 
-@Client.on_message(filters.me & filters.command("afk", cmd))
+@Client.on_message(
+    filters.command(["afk"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def afk(client: Client, message: Message):
     if len(message.text.split()) >= 2:
         set_afk(True, message.text.split(None, 1)[1])
