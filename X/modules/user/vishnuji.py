@@ -34,11 +34,14 @@ from random import choice
 from pyrogram.types import Message
 from pyrogram import filters, Client
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 from SANATANDB.sanatan import VISHNUJI
 from .help import *
 
-@Client.on_message(filters.command("vishnuji", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["vishnuji"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def vishnuji(x: Client, e: Message):
       NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
