@@ -31,6 +31,7 @@ import asyncio
 import humanize
 from pyrogram import filters, Client
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from .help import *
 
@@ -41,6 +42,9 @@ async def progress_callback(current, total, bot: Client, message: Message):
 
 
 @Client.on_message(filters.command('upload', '.') & filters.me)
+@Client.on_message(
+    filters.command(["upload"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def upload_helper(bot: Client, message: Message):
     if len(message.command) > 1:
         await bot.send_document('self', message.command[1], progress=progress_callback, progress_args=(bot, message))
