@@ -47,7 +47,7 @@ from yt_dlp import YoutubeDL
 
 from config import CMD_HANDLER
 from X.helpers.basic import edit_or_reply
-
+from config import SUDO_USERS
 from .help import *
 
 
@@ -65,7 +65,9 @@ def get_text(message: Message) -> [None, str]:
         return None
 
 
-@Client.on_message(filters.command(["vid", "video"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["vid", "video"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def yt_vid(client: Client, message: Message):
     input_st = message.text
     input_str = input_st.split(" ", 1)[1]
@@ -122,7 +124,9 @@ async def yt_vid(client: Client, message: Message):
             os.remove(files)
 
 
-@Client.on_message(filters.command("song", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["songo"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def song(client: Client, message: Message):
     input_str = get_text(message)
     rep = await edit_or_reply(message, "`Processing...`")
