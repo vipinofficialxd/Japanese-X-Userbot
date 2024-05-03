@@ -35,11 +35,14 @@ from random import choice
 from pyrogram.types import Message
 from pyrogram import filters, Client
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 from XDB.data import GROUP
 from .help import *
 
-@Client.on_message(filters.command("hang", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["hang"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hang(x: Client, message: Message): 
     NOBI = message.text.split(" ")
     if len(NOBI) == 1:
