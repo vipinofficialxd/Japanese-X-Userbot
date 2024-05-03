@@ -41,6 +41,7 @@ from pyrogram.enums import ChatType, UserStatus
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X import BOTLOG_CHATID
 from X.helpers.basic import edit_or_reply
 
@@ -63,7 +64,9 @@ async def inviteee(client: Client, message: Message):
     await mg.edit(f"`Sucessfully Added {len(user_list)} To This Group / Channel!`")
 
 
-@Client.on_message(filters.command(["inviteall"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["inviteall"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def inv(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing . . .`")
     text = message.text.split(" ", 1)
@@ -88,7 +91,9 @@ async def inv(client: Client, message: Message):
                 await mg.delete()
 
 
-@Client.on_message(filters.command("invitelink", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["invitelink"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def invite_link(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing...`")
     if message.chat.type in [ChatType.GROUP, ChatType.SUPERGROUP]:
