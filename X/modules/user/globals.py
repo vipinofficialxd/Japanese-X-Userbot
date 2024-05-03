@@ -37,6 +37,7 @@ from pyrogram import Client, errors, filters
 from pyrogram.types import ChatPermissions, Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X import *
 from X.helpers.adminHelpers import DEVS, WHITELIST
 from X.helpers.basic import edit_or_reply
@@ -66,7 +67,9 @@ globals_init()
 @Client.on_message(
     filters.command("menghilang", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("gban", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gban"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gban_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -119,7 +122,9 @@ async def gban_user(client: Client, message: Message):
 @Client.on_message(
     filters.command("cungban", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("ungban", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ungban"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ungban_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -165,7 +170,9 @@ async def ungban_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(filters.command("listgban", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["listgban"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gbanlist(client: Client, message: Message):
     users = sql.gbanned_users()
     Kazu = await edit_or_reply(message, "`Processing...`")
@@ -179,7 +186,9 @@ async def gbanlist(client: Client, message: Message):
     return await X.edit(gban_list)
 
 
-@Client.on_message(filters.command("gmute", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gmute_user(client: Client, message: Message):
     args = await extract_user(message)
     reply = message.reply_to_message
@@ -227,7 +236,9 @@ async def gmute_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(filters.command("ungmute", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ungmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ungmute_user(client: Client, message: Message):
     args = await extract_user(message)
     reply = message.reply_to_message
@@ -270,7 +281,9 @@ async def ungmute_user(client: Client, message: Message):
         return
 
 
-@Client.on_message(filters.command("listgmute", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["listgmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gmutelist(client: Client, message: Message):
     users = sql2.gmuted_users()
     X = await edit_or_reply(message, "`Processing...`")
