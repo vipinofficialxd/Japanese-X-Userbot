@@ -31,6 +31,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from X import *
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.tools import get_arg
 
 from .help import *
@@ -76,7 +77,9 @@ def gen_font(text, new_font):
             text = text.replace(q, new)
     return text
 
-@Client.on_message(filters.me & filters.command(["font"], cmd))
+@Client.on_message(
+    filters.command(["font"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def font_ubot(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         font = get_arg(message)
@@ -104,7 +107,9 @@ async def font_ubot(client: Client, message: Message):
         return await message.reply("Reply Text And Fill In Font Name!!!")
 
 
-@Client.on_message(filters.me & filters.command(["lf", "listfont"], cmd))
+@Client.on_message(
+    filters.command(["lf", "listfont"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fonts(client: Client, message: Message):
     await message.reply(
         "<b>ᴅᴀғᴛᴀʀ ғᴏɴᴛs</b>\n\n"
