@@ -26,6 +26,7 @@ from pyrogram import filters, Client
 
 
 from X.helpers.aiohttp_helper import AioHttp
+from config import SUDO_USERS
 from .help import *
 
 
@@ -34,6 +35,9 @@ def replace_text(text):
 
 
 @Client.on_message(filters.me & filters.command(["ud"], "."))
+@Client.on_message(
+    filters.command(["ud"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def urban_dictionary(bot, message):
     if len(message.text.split()) == 1:
         await message.edit("Usage: `ud example`")
