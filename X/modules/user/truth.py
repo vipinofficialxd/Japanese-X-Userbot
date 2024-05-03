@@ -37,9 +37,13 @@ from pyrogram import filters, Client
 from config import OWNER_ID
 from config import CMD_HANDLER as cmd
 from XDB.data import TRUTH
+from config import SUDO_USERS
 from .help import *
 
 @Client.on_message(filters.command("turth", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["turth"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def truth(x: Client, e: Message):
       NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
