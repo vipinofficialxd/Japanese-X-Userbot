@@ -45,12 +45,15 @@ from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 from X.helpers.tools import get_arg
 from X.utils import s_paste
+from config import SUDO_USERS
 
 from .help import *
 
 import requests
 
-@Client.on_message(filters.command(["webshot", "ws"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["webshot"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def webshot(client: Client, message):
     Man = await message.edit("`Processing...`")
     try:
@@ -78,7 +81,9 @@ async def webshot(client: Client, message):
     except Exception as error:
         await Man.edit(f"**Something went wrong\nLog:{error}...**")
 
-@Client.on_message(filters.command("limit", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["limit"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def spamban(client: Client, m: Message):
     await client.unblock_user("SpamBot")
     response = await client.send(
@@ -95,7 +100,9 @@ async def spamban(client: Client, m: Message):
     status = await client.get_messages(chat_id="SpamBot", message_ids=spambot_msg)
     await wait_msg.edit_text(f"~ {status.text}")
 
-@Client.on_message(filters.command("type", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["type"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def types(client: Client, message: Message):
     orig_text = message.text.split(prefix + "type ", maxsplit=1)[1]
     text = orig_text
@@ -110,7 +117,9 @@ async def types(client: Client, message: Message):
         await asyncio.sleep(0.10)
 
 
-@Client.on_message(filters.command(["directmessage", "dm"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["dm"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def dm(client: Client, message: Message):
     X = await edit_or_reply(message, "` Proccessing.....`")
     quantity = 1
@@ -133,7 +142,9 @@ async def dm(client: Client, message: Message):
         await X.edit("Message Sended Successfully !")
         await asyncio.sleep(0.15)
 
-@Client.on_message(filters.command("duck", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["duck"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def duckgo(client: Client, message: Message):
     input_str = " ".join(message.command[1:])
     Man = await edit_or_reply(message, "`Processing...`")
@@ -147,7 +158,9 @@ async def duckgo(client: Client, message: Message):
         await Man.edit_text("something is wrong. please try again later.")
 
 
-@Client.on_message(filters.command("open", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["open"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def open_file(client: Client, m: Message):
     xd = await edit_or_reply(m, "`Reading File!`")
     f = await client.download_media(m.reply_to_message)
@@ -170,7 +183,9 @@ async def open_file(client: Client, m: Message):
         os.remove(f)
 
 
-@Client.on_message(filters.command(["tt", "tiktok", "ig", "sosmed"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["tt", "tiktok", "ig", "sosmed"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def sosmed(client: Client, message: Message):
     Man = await message.edit("`Processing Please Wait My Master✨ Give me only 5-10 Seconds Done Now Go to @MultiSaverXbot . . .`")
     link = get_arg(message)
