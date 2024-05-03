@@ -40,6 +40,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 from X.utils.misc import extract_user
@@ -50,7 +51,9 @@ flood = {}
 profile_photo = "X/modules/cache/pfp.jpg"
 
 
-@Client.on_message(filters.command(["block"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["block"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def block_user_func(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Be patient, block again . . .`")
@@ -65,7 +68,9 @@ async def block_user_func(client: Client, message: Message):
     await message.edit(f"**managed to Block This Dick Kid** {umention}")
 
 
-@Client.on_message(filters.command(["unblock"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["unblock"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def unblock_user_func(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Be patient and unblock stupid people . . .`")
@@ -80,7 +85,9 @@ async def unblock_user_func(client: Client, message: Message):
     await message.edit(f"**Successfully Unblocked This Dick Boy ✌** {umention}")
 
 
-@Client.on_message(filters.command(["setname"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["setname"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def setname(client: Client, message: Message):
     X = await edit_or_reply(message, "`Be patient Change name. . .`")
     if len(message.command) == 1:
@@ -100,7 +107,9 @@ async def setname(client: Client, message: Message):
         )
 
 
-@Client.on_message(filters.command(["setbio"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["setbio"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_bio(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing . . .`")
     if len(message.command) == 1:
@@ -116,7 +125,9 @@ async def set_bio(client: Client, message: Message):
         return await X.edit("Provide text to set as bio.")
 
 
-@Client.on_message(filters.me & filters.command(["setpfp"], cmd))
+@Client.on_message(
+    filters.command(["setpfp"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_pfp(client: Client, message: Message):
     replied = message.reply_to_message
     if (
@@ -140,7 +151,9 @@ async def set_pfp(client: Client, message: Message):
         await message.delete()
 
 
-@Client.on_message(filters.me & filters.command(["vpfp"], cmd))
+@Client.on_message(
+    filters.command(["vpfp"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def view_pfp(client: Client, message: Message):
     user_id = await extract_user(message)
     if user_id:
