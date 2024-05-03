@@ -55,6 +55,7 @@ from X.helpers.basic import edit_or_reply
 from X.helpers.constants import WWW
 from X import app 
 from X.helpers.PyroHelpers import SpeedConvert
+from config import SUDO_USERS
 from X.utils.tools import get_readable_time
 from X.modules.bot.inline import get_readable_time
 from X.helpers.adminHelpers import DEVS
@@ -63,7 +64,9 @@ from .help import *
 
 modules = CMD_HELP
 
-@Client.on_message(filters.command(["speed", "speedtest"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["speed", "speedtest"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def speed_test(client: Client, message: Message):
     new_msg = await edit_or_reply(message, "`Running speed test . . .`")
     spd = speedtest.Speedtest()
@@ -95,7 +98,9 @@ async def speed_test(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("dc", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["dc"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def nearest_dc(client: Client, message: Message):
     dc = await client.send(functions.help.GetNearestDc())
     await edit_or_reply(
@@ -104,9 +109,11 @@ async def nearest_dc(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command("cping", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command(["cping"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
-@Client.on_message(filters.command(["ping"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["ping"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def module_ping(client: Client, message: Message):
     cmd = message.command
     help_arg = ""
@@ -126,7 +133,9 @@ async def module_ping(client: Client, message: Message):
             print(f"{e}")
 
 
-@Client.on_message(filters.command("alive", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["alive"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def module_peler(client: Client, message: Message):
     cdm = message.command
     help_arg = ""
