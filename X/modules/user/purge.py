@@ -38,6 +38,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
 
@@ -47,7 +48,9 @@ from .help import *
 @Client.on_message(
     filters.command("cdel", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("del", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["del"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def del_msg(client: Client, message: Message):
     msg_src = message.reply_to_message
     if msg_src:
@@ -64,7 +67,9 @@ async def del_msg(client: Client, message: Message):
 @Client.on_message(
     filters.command("cpurge", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("purge", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["purge"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def purge(client: Client, message: Message):
     X = await edit_or_reply(message, "`Starting To Purge Messages!`")
     msg = message.reply_to_message
