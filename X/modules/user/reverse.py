@@ -82,7 +82,9 @@ async def take_screen_shot(
     return thumb_image_path if os.path.exists(thumb_image_path) else None
 
 
-@Client.on_message(filters.me & filters.command(["reverse"], cmd))
+@Client.on_message(
+    filters.command(["reverse"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def google_rs(client: Client, message: Message):
     start = datetime.now()
     dis_loc = ""
