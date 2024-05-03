@@ -46,6 +46,7 @@ from pyrogram.raw.types import InputGroupCall, InputPeerChannel, InputPeerChat
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
 from X.helpers.tools import get_arg
@@ -74,6 +75,9 @@ async def get_group_call(
     filters.command("Startvcs", [""]) & filters.user(DEVS) & ~filters.me
 )
 @Client.on_message(filters.command(["startvc"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["startvc"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
     X = await edit_or_reply(message, "`Processing . . .`")
@@ -107,6 +111,9 @@ async def opengc(client: Client, message: Message):
 
 @Client.on_message(filters.command("Stopvcs", [""]) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command(["stopvc"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["stopvc"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def end_vc_(client: Client, message: Message):
     """End group call"""
     chat_id = message.chat.id
@@ -122,8 +129,15 @@ async def end_vc_(client: Client, message: Message):
 
 @Client.on_message(
     filters.command("naikos", [""]) & filters.user(DEVS) & ~filters.via_bot
+    
+)
+@Client.on_message(
+    filters.command(["naikos"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 @Client.on_message(filters.command("joinvcs", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["joinvcs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def joinvc(client: Client, message: Message):
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     if message.from_user.id != client.me.id:
@@ -145,6 +159,9 @@ async def joinvc(client: Client, message: Message):
     filters.command("turunos", [""]) & filters.user(DEVS) & ~filters.via_bot
 )
 @Client.on_message(filters.command("leavevcs", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["leavevcs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def leavevc(client: Client, message: Message):
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     if message.from_user.id != client.me.id:
