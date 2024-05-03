@@ -33,11 +33,14 @@ from pyrogram import filters, Client
 from pyrogram.types import Message
 import os
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 
 from .help import *
 
-@Client.on_message(filters.command("lyrics", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["lyrics"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def get_lyrics(client: Client, message: Message):
     if len(message.command) != 2:
         await message.reply_text("ᴘʟᴇᴀꜱᴇ ᴜꜱᴇ %𝟸𝟶 ɪɴ ʙᴇᴛᴡᴇᴇɴ ʏᴏᴜʀ ꜱᴏɴɢ ɪғ ɪᴛ'ꜱ ᴍᴏʀᴇ ᴛʜᴇɴ 𝟷 ᴡᴏʀᴅ\nExᴀᴍᴘʟᴇ .ʟʏʀɪᴄꜱ ᴛᴜ%𝟸𝟶ʜᴀɪɴ%𝟸𝟶ᴋᴀʜᴀ")
