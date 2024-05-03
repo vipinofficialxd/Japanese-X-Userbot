@@ -36,7 +36,7 @@ from datetime import datetime
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
+from config import SUDO_USERS
 from config import CMD_HANDLER
 from config import *
 from X import *
@@ -56,56 +56,69 @@ absen = [
 ]
 
 
-@Client.on_message(filters.command("Tod", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["Tod"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tod(_, message: Message):
    await message.reply("**You bastard is a bitch!😏**")
 
 
-@Client.on_message(filters.command("adel", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["adel"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def sheril(_, message: Message):
    await message.reply("**OSHIII I FEEL IT😡**")
 
 
-@Client.on_message(filters.command("Absen", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["Absen"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def absen(_, message: Message):
     await message.reply("**Present Japanese Sayanggg🥵**")
     
-    
-@Client.on_message(filters.command("Sayang", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["Sayang"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def sayang(_, message: Message):
     await message.reply("**Yes dear, why??🥰**")
 
 
-@Client.on_message(filters.command("Bub", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["Bub"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def bub(_, message: Message):
     await message.reply("**CHAPTER BUB CHAPTER BUB I AM GUY'S BOYFRIEND LOO😡**")
 
 
-@Client.on_message(filters.command("Sun", cmd) & filters.user(DEVS) & ~filters.me)
+@Client.on_message(
+    filters.command(["Sun"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tod(_, message: Message):
     await message.reply("**MMMWWWAAAHHHHHH😚**")
 
-
-
-
-@Client.on_message(filters.command("tes", cmd) & filters.user(DEVS))
+@Client.on_message(
+    filters.command(["tes"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tes(client, message: Message):
     await client.send_reaction(message.chat.id, message.id, "🗿")
 
-
-@Client.on_message(filters.command("repo", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["repo"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def repo(client: Client, message: Message):
     await edit_or_reply(
         message, First.REPO.format(BOT_VER), disable_web_page_preview=True
     )
 
-
-@Client.on_message(filters.command("creator", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["creator"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def creator(client: Client, message: Message):
     await edit_or_reply(message, First.CREATOR)
 
-
-@Client.on_message(filters.command(["uptime", "up"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["uptime"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def uptime(client: Client, message: Message):
     now = datetime.now()
     current_uptime = now - START_TIME
@@ -113,8 +126,9 @@ async def uptime(client: Client, message: Message):
         message, f"Current Uptime\n" f"```{str(current_uptime).split('.')[0]}```"
     )
 
-
-@Client.on_message(filters.command("id", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["id"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def get_id(client: Client, message: Message):
     file_id = None
     user_id = None
