@@ -24,6 +24,7 @@ from asyncio import sleep
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+from config import SUDO_USERS
 from X.helpers import *
 from X.helpers.SQL.notes_sql import *
 from X.utils import *
@@ -32,7 +33,9 @@ from X import *
 from .help import *
 
 
-@Client.on_message(filters.command("notes", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["notes"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def list_notes(client, message):
     user_id = message.from_user.id
     notes = get_notes(str(user_id))
@@ -44,7 +47,9 @@ async def list_notes(client, message):
     await message.reply(msg)
 
 
-@Client.on_message(filters.command("delnote", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["delnote"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def remove_notes(client, message):
     notename = get_arg(message)
     user_id = message.from_user.id
@@ -55,7 +60,9 @@ async def remove_notes(client, message):
     return await message.reply("Successfully Delete Note: {}".format(notename))
 
 
-@Client.on_message(filters.command("save", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["save"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def simpan_note(client, message):
     keyword = get_arg(message)
     user_id = message.from_user.id
@@ -73,7 +80,9 @@ async def simpan_note(client, message):
     await message.reply(f"Saved successfully note {keyword}")
 
 
-@Client.on_message(filters.command("get", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["get"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def panggil_notes(client, message):
     notename = get_arg(message)
     user_id = message.from_user.id
