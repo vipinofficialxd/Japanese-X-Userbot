@@ -30,12 +30,13 @@ import asyncio
 import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from .help import *
 
 
 @Client.on_message(
-    filters.command(["neko", "nekobin", "bin", "paste"], ".") & filters.me
+    filters.command(["neko", "nekobin", "bin", "paste"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def paste(bot: Client, message: Message):
     text = message.reply_to_message.text
