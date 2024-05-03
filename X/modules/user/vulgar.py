@@ -26,6 +26,7 @@ import re
 from pyrogram import filters, Client
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from .help import *
 
@@ -40,7 +41,10 @@ def switch():
     return vulgar_filter
 
 
-@Client.on_message(filters.command("vulgar", ".") & filters.me)
+
+@Client.on_message(
+    filters.command(["vulgar"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def toggle(bot: Client, message: Message):
     c = switch()
     await message.edit("`Vulgar Enabled`" if c else "`Vulgar Disabled`")
