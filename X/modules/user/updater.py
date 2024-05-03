@@ -35,6 +35,7 @@ from config import BRANCH
 from config import CMD_HANDLER as cmd
 from config import GIT_TOKEN, HEROKU_API_KEY, HEROKU_APP_NAME, REPO_URL
 from X.helpers.adminHelpers import DEVS
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.misc import HAPP, XCB
 from X.helpers.tools import get_arg
@@ -89,6 +90,9 @@ async def updateme_requirements():
     filters.command("diupdate", ["."]) & filters.user(DEVS) & ~filters.me
 )
 @Client.on_message(filters.command("update", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["update"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def upstream(client: Client, message: Message):
     status = await edit_or_reply(message, "`Checking for Updates, Wait a Moment Master...`")
     conf = get_arg(message)
@@ -218,6 +222,9 @@ async def upstream(client: Client, message: Message):
 
 @Client.on_message(filters.command("cupdate", ["."]) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("updatedeploy", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["updatedeploy"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def updaterman(client: Client, message: Message):
     if await is_heroku():
         if HAPP is None:
