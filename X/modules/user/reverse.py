@@ -47,7 +47,6 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
-from config import SUDO_USERS
 from X.helpers.PyroHelpers import ReplyCheck
 
 from .help import *
@@ -83,9 +82,7 @@ async def take_screen_shot(
     return thumb_image_path if os.path.exists(thumb_image_path) else None
 
 
-@Client.on_message(
-    filters.command(["reverse"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["reverse"], cmd))
 async def google_rs(client: Client, message: Message):
     start = datetime.now()
     dis_loc = ""
@@ -144,9 +141,7 @@ async def google_rs(client: Client, message: Message):
     )
 
 
-@Client.on_message(
-    filters.command(["areverse"], ".") & (filters.me | filters.user(SUDO_USERS))
-)
+@Client.on_message(filters.me & filters.command(["areverse"], cmd))
 async def tracemoe_rs(client: Client, message: Message):
     dis_loc = ""
     if message.reply_to_message:
