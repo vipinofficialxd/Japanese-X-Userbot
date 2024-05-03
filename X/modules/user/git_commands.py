@@ -33,11 +33,14 @@ import aiohttp
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 
 from .help import *
 
-@Client.on_message(filters.command("gitinfo", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gitinfo"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def githubuser(client: Client, message: Message):
     if len(message.command) != 2:
         await message.reply_text(f". ɢɪᴛɪɴꜰᴏ [ᴜꜱᴇʀɴᴀᴍᴇ]")
