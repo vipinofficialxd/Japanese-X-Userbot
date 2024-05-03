@@ -26,10 +26,13 @@ from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from X.helpers.PyroHelpers import ReplyCheck
+from config import SUDO_USERS
 from .help import *
 
 
-@Client.on_message(filters.command("music", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["music"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def send_music(bot: Client, message: Message):
     try:
         cmd = message.command
