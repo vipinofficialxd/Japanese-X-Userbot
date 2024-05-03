@@ -37,6 +37,7 @@ from pyrogram.types import Message
 
 from config import BLACKLIST_CHAT, BOTLOG_CHATID
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.utils.misc import extract_args
 
@@ -55,7 +56,9 @@ def spam_allowed():
     return SPAM_COUNT[0] < 50
 
 
-@Client.on_message(filters.me & filters.command(["dspam", "delayspam"], cmd))
+@Client.on_message(
+    filters.command(["dpsam", "delayspam"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def delayspam(client: Client, message: Message):
     if message.chat.id in BLACKLIST_CHAT:
         return await edit_or_reply(
