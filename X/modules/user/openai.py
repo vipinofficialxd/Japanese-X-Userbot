@@ -37,6 +37,7 @@ from X.helpers.basic import *
 from X.helpers.adminHelpers import DEVS
 from config import *
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.utils import *
 from urllib.parse import quote
 
@@ -48,11 +49,12 @@ import random
 from .help import *
 
 API_ENDPOINTS = [
-    "https://api.ajinkya.link/gpt.php?question={question}",
-    "https://chatgpt.apinepdev.workers.dev/?question={question}"
+    "https://tofu-api.onrender.com/chat/{model}/{prompt}",
 ]
 
-@Client.on_message(filters.command("ai", ".") & filters.me)
+@Client.on_message(
+    filters.command(["ai"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def openai(client: Client, message: Message):
     if len(message.command) == 1:
         return await message.reply(f"Ketik <code>.{message.command[0]} [question]</code> Questions for use OpenAI")
