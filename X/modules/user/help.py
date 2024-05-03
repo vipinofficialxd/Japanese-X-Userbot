@@ -39,6 +39,7 @@ import asyncio
 from prettytable import PrettyTable
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from X import app, CMD_HELP
 from X.helpers.cmd import *
@@ -54,7 +55,9 @@ async def edit_or_reply(message: Message, *args, **kwargs) -> Message:
     )
     return await xyz(*args, **kwargs)
 
-@Client.on_message(filters.command(["help", "helpme"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["help", "helpme"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def module_help(client: Client, message: Message):
     cmd = message.command
     help_arg = ""
@@ -105,7 +108,9 @@ async def module_help(client: Client, message: Message):
             )
 
 
-@Client.on_message(filters.command(["plugins", "modules"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["plugins", "modules"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def module_helper(client: Client, message: Message):
     cmd = message.command
     help_arg = ""
