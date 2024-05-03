@@ -42,12 +42,15 @@ from pyrogram.types import Message
 from config import CMD_HANDLER
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
+from config import SUDO_USERS
 from X.utils import extract_user
 
 from .help import *
 
 
-@Client.on_message(filters.command("toxicity", CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["toxicity"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ngejamet(client: Client, message: Message):
     user_id = await extract_user(message)
     if user_id in DEVS:
@@ -71,7 +74,9 @@ async def ngejamet(client: Client, message: Message):
     await xx.edit("**BYE DESPITE HUMAN WHO WAS BORN IN A POOR AND BAD FAMILY**")
     await asyncio.sleep(1.5)
 
-@Client.on_message(filters.command("idiot", CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["idiot"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ngejamet(client: Client, message: Message):
     user_id = await extract_user(message)
     if user_id in DEVS:
