@@ -41,6 +41,7 @@ from pyrogram.enums import ChatType
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 from X.utils import extract_user
@@ -48,7 +49,9 @@ from X.utils import extract_user
 from .help import *
 
 
-@Client.on_message(filters.command(["whois", "info"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["whois", "info"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def who_is(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Processing . . .`")
@@ -111,7 +114,9 @@ async def who_is(client: Client, message: Message):
         return await X.edit(f"**INFO:** `{e}`")
 
 
-@Client.on_message(filters.command(["chatinfo", "cinfo", "ginfo"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["chatinfo", "cinfo", "ginfo"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def chatinfo_handler(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing...`")
     try:
