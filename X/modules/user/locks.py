@@ -37,6 +37,7 @@ from pyrogram.errors.exceptions.bad_request_400 import ChatNotModified
 from pyrogram.types import ChatPermissions, Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 
 from .help import *
 
@@ -106,7 +107,9 @@ async def tg_lock(
     await message.edit_text(("Locked." if lock else "Unlocked."))
 
 
-@Client.on_message(filters.command(["lock", "unlock"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["lock", "unlock"], ".") & (filters.me | filters.user(SUDO_USERS))
+    )
 async def locks_func(client: Client, message: Message):
     if len(message.command) != 2:
         return await message.edit_text(incorrect_parameters)
@@ -149,7 +152,9 @@ async def locks_func(client: Client, message: Message):
         await message.edit(f"Unlocked Everything in {message.chat.title}")
 
 
-@Client.on_message(filters.command("locks", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["lock"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def locktypes(client: Client, message: Message):
     permissions = await current_chat_permissions(client, message.chat.id)
 
