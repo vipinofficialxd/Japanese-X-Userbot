@@ -42,6 +42,7 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 
 from .help import *
@@ -49,7 +50,9 @@ from .help import *
 lang = "id"  # Default Language for voice
 
 
-@Client.on_message(filters.me & filters.command(["voice", "tts"], cmd))
+@Client.on_message(
+    filters.command(["voice", "tts"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def voice(client: Client, message):
     global lang
     cmd = message.command
