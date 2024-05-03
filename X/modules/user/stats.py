@@ -37,6 +37,7 @@ from datetime import datetime
 
 from pyrogram import Client, enums, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from config import CMD_HANDLER
 from X.helpers.basic import edit_or_reply
@@ -44,7 +45,9 @@ from X.helpers.basic import edit_or_reply
 from .help import *
 
 
-@Client.on_message(filters.command(["stats", "status"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["stats", "status"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def stats(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Collecting stats...`")
     start = datetime.now()
