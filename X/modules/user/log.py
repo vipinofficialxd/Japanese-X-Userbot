@@ -41,6 +41,7 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X import BOTLOG_CHATID
 from X.helpers.basic import edit_or_reply
 from X.helpers.SQL import no_log_pms_sql
@@ -113,7 +114,9 @@ async def log_tagged_messages(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("log", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["log"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_log_p_m(client: Client, message: Message):
     if BOTLOG_CHATID != -100:
         if no_log_pms_sql.is_approved(message.chat.id):
@@ -121,7 +124,9 @@ async def set_log_p_m(client: Client, message: Message):
             await message.edit("**LOG Chat of this Group Successfully Activated**")
 
 
-@Client.on_message(filters.command("nolog", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["nolog"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_no_log_p_m(client: Client, message: Message):
     if BOTLOG_CHATID != -100:
         if not no_log_pms_sql.is_approved(message.chat.id):
@@ -129,7 +134,9 @@ async def set_no_log_p_m(client: Client, message: Message):
             await message.edit("**LOG Chat of this Group Successfully Disabled**")
 
 
-@Client.on_message(filters.command(["pmlog", "pmlogger"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["pmlog"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_pmlog(client: Client, message: Message):
     if BOTLOG_CHATID == -100:
         return await message.edit(
@@ -157,7 +164,9 @@ async def set_pmlog(client: Client, message: Message):
         await edit_or_reply(message, "**PM LOG It's Turned Off**")
 
 
-@Client.on_message(filters.command(["gruplog", "grouplog", "gclog"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["grouplog"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def set_gruplog(client: Client, message: Message):
     if BOTLOG_CHATID == -100:
         return await message.edit(
