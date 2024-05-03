@@ -38,6 +38,7 @@ from os import environ, execle, remove
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from config import CMD_HANDLER
 from X import BOTLOG_CHATID, LOGGER
@@ -51,6 +52,9 @@ HAPP = None
 
 @Client.on_message(filters.command("restc", ["."]) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command("restart", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["restart"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def restart_bot(_, message: Message):
     try:
         msg = await edit_or_reply(message, "`Restarting bot...`")
@@ -67,6 +71,9 @@ async def restart_bot(_, message: Message):
 
 
 @Client.on_message(filters.command("shutdown", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["shutdown"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def shutdown_bot(client: Client, message: Message):
     if BOTLOG_CHATID:
         await client.send_message(
@@ -82,6 +89,9 @@ async def shutdown_bot(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("logs", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["logs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def logs_ubot(client: Client, message: Message):
     if HAPP is None:
         return await edit_or_reply(
