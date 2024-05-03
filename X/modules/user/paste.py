@@ -41,6 +41,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.utils.pastebin import paste
 
@@ -49,7 +50,9 @@ from .help import *
 pattern = re.compile(r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$")
 
 
-@Client.on_message(filters.command("paste", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["paste"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def paste_func(client: Client, message: Message):
     if not message.reply_to_message:
         return await edit_or_reply(message, f"Reply To A Message With {cmd}paste")
