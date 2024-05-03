@@ -35,10 +35,13 @@ from pyrogram.types import Message
 from pyrogram import enums
 
 from X.helpers.basic import edit_or_reply
+from config import SUDO_USERS
 from .help import *
 
 
-@Client.on_message(filters.command(["weather", "w"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["weather", "w"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def get_weather(bot: Client, message: Message):
     if len(message.command) == 1:
         await message.edit("Usage: `.weather Delhi`")
