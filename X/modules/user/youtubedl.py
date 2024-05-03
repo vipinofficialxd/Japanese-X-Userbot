@@ -125,7 +125,7 @@ async def yt_vid(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["songo"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.command(["song"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def song(client: Client, message: Message):
     input_str = get_text(message)
