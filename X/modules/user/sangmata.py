@@ -43,16 +43,19 @@ from pyrogram.raw.functions.messages import DeleteHistory
 from pyrogram.types import *
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.utils import extract_user
 
 from .help import *
 
 
-@Client.on_message(filters.command(["sg", "sa", "sangmata"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["sg"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def sg(client: Client, message: Message):
     args = await extract_user(message)
-    lol = await edit_or_reply(message, "I'm curious, what's the name of Pepek?....`")
+    lol = await edit_or_reply(message, "I'm curious, what's the name of samurai?....`")
     if args:
         try:
             user = await client.get_users(args)
