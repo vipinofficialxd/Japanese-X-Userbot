@@ -39,6 +39,7 @@ from telegraph import Telegraph, exceptions, upload_file
 
 from config import CMD_HANDLER
 from X.helpers.basic import edit_or_reply, get_text
+from config import SUDO_USERS
 from X.helpers.tools import *
 
 from .help import *
@@ -48,7 +49,9 @@ r = telegraph.create_account(short_name="PyroMan-Userbot")
 auth_url = r["auth_url"]
 
 
-@Client.on_message(filters.command(["tg", "telegraph"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["tg", "telegraph"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def uptotelegraph(client: Client, message: Message):
     X = await edit_or_reply(message, "`Processing . . .`")
     if not message.reply_to_message:
