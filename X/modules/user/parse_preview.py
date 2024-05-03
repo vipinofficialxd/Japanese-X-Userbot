@@ -39,13 +39,16 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.utils.sections import section
 
 from .help import *
 
 
-@Client.on_message(filters.command("parse", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["parse"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def parse(client: Client, message: Message):
     r = message.reply_to_message
     has_wpp = False
