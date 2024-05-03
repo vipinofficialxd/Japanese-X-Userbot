@@ -144,7 +144,9 @@ async def google_rs(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.me & filters.command(["areverse"], cmd))
+@Client.on_message(
+    filters.command(["areverse"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tracemoe_rs(client: Client, message: Message):
     dis_loc = ""
     if message.reply_to_message:
