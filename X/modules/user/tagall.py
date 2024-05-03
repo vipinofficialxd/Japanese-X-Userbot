@@ -38,6 +38,7 @@ from asyncio import sleep
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from config import CMD_HANDLER
 from X.helpers.tools import get_arg
@@ -48,7 +49,9 @@ spam_chats = []
 
 
 
-@Client.on_message(filters.command("tagall", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["tagall"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def mentionall(client: Client, message: Message):
     await message.delete()
     chat_id = message.chat.id
@@ -80,7 +83,9 @@ async def mentionall(client: Client, message: Message):
         pass
 
 
-@Client.on_message(filters.command("cancel", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["cancel"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def cancel_spam(client: Client, message: Message):
     if not message.chat.id in spam_chats:
         return await message.edit("**Looks like there's no tagall here.**")
