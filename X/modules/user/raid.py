@@ -35,11 +35,14 @@ from random import choice
 from pyrogram.types import Message
 from pyrogram import filters, Client
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 from XDB.data import RAID
 from .help import *
 
-@Client.on_message(filters.command("raid", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["raid"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def raid(x: Client, e: Message):
       NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
