@@ -40,12 +40,15 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import get_text
 
 from .help import *
 
 
-@Client.on_message(filters.command("trump", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["trump"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def trump_tweet(client: Client, message: Message):
     text = get_text(message)
     if not text:
@@ -60,7 +63,9 @@ async def trump_tweet(client: Client, message: Message):
     await message.delete()
 
 
-@Client.on_message(filters.command("ctweet", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ctweet"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def custom_tweet(client: Client, message: Message):
     text = get_text(message)
     input_str = get_text(message)
@@ -91,4 +96,4 @@ add_command_help(
         ["trump", "ᴍᴀᴋᴇ ᴀ Qᴜᴏᴛᴇ ʙʏ Tʀᴜᴍᴘ."],
         ["ctweet", "Tᴡɪᴛᴛᴇ ʙʏ Uʀ ᴠᴀʟᴜᴇꜱ."],
     ],
-        )
+)
