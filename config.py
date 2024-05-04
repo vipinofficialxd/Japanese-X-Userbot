@@ -73,9 +73,12 @@ if SUDOS:
         except ValueError:
             print(f"Warning: Invalid user ID '{sudo_id}' in SUDO_USERS environment variable.")
             continue
+            
+OWNER_ID = os.getenv("OWNER_ID", "")
+
 SUDO_USERS.append(OWNER_ID)
 SUDO_USERS.extend(MASTERS)
-OWNER_ID = getenv("OWNER_ID", "")
+
 BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", None)
 if not BLACKLIST_CHAT:
     BLACKLIST_CHAT = [-1001608701614, -1001675459127, -1001473548283, -1001608701614]
