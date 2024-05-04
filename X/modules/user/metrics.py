@@ -25,6 +25,7 @@ import time
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from X.helpers.basic import edit_or_reply
+from config import SUDO_USERS
 
 from .help import *
 
@@ -34,7 +35,9 @@ class Custom(dict):
         return 0
 
 
-@Client.on_message(filters.command("wordcount", ".") & filters.me)
+@Client.on_message(
+    filters.command(["wordcount"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def word_count(bot: Client, message: Message):
     await message.delete()
     words = Custom()
