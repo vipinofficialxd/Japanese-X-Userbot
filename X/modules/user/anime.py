@@ -35,11 +35,13 @@ import aiohttp
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
-
+from config import SUDO_USERS
 from X.helpers.PyroHelpers import GetChatID, ReplyCheck
 from .help import * 
 
-@Client.on_message(filters.command(["genshin"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["genshin"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_genshin(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/genshin"
     async with aiohttp.ClientSession() as session:
@@ -67,7 +69,9 @@ async def give_genshin(bot: Client, message: Message):
                 ),
               )
 
-@Client.on_message(filters.command(["swimsuit"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["swimsuit"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_swimsuit(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/swimsuit"
     async with aiohttp.ClientSession() as session:
@@ -95,7 +99,9 @@ async def give_swimsuit(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["schoolswimsuit"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["schoolswimsuit"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_schoolswimsuit(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/schoolswimsuit"
     async with aiohttp.ClientSession() as session:
@@ -123,7 +129,9 @@ async def give_schoolswimsuit(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["white"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["white"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_white(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/white"
     async with aiohttp.ClientSession() as session:
@@ -151,7 +159,9 @@ async def give_white(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["barefoot"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["barefoot"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_barefoot(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/barefoot"
     async with aiohttp.ClientSession() as session:
@@ -179,7 +189,9 @@ async def give_barefoot(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["touhou"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["touhou"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/touhou"
     async with aiohttp.ClientSession() as session:
