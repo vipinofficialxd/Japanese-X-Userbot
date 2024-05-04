@@ -37,13 +37,16 @@ import datetime
 from prettytable import PrettyTable
 from pyrogram import Client, filters
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 
 from X.helpers.aiohttp_helper import AioHttp
 
 from .help import *
 
-@Client.on_message(filters.command("corona", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["corona"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def corona_all(client, message):
     try:
         r = await AioHttp().get_json("https://api.rootnet.in/covid19-in/stats/latest")
