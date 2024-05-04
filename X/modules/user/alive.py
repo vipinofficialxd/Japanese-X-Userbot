@@ -51,6 +51,7 @@ from telegraph import exceptions, upload_file
 
 from config import BOT_VER, CHANNEL
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from config import GROUP, OWNER_ID
 from X import CMD_HELP, StartTime
 from X.helpers.basic import edit_or_reply
@@ -71,7 +72,9 @@ emoji = gvarstatus("ALIVE_EMOJI") or "✧"
 alive_text = gvarstatus("ALIVE_TEKS_CUSTOM") or "✧✧ 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 𝐈𝐒 𝐀𝐋𝐈𝐕𝐄 ✧✧"
 
 
-@Client.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["alive"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def alip(client: Client, message: Message):
     X = await edit_or_reply(message, "🌸")
     await asyncio.sleep(2)
@@ -103,7 +106,9 @@ async def alip(client: Client, message: Message):
       await X.edit(man, disable_web_page_preview=True)
 
 
-@Client.on_message(filters.command("setalivelogo", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["setalivepic"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def setalivelogo(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
@@ -140,7 +145,9 @@ async def setalivelogo(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(filters.command("setalivetext", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["setalivetext"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def setalivetext(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
@@ -167,7 +174,9 @@ async def setalivetext(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(filters.command("setemoji", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["setaliveemoji"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def setemoji(client: Client, message: Message):
     try:
         import X.helpers.SQL.globals as sql
