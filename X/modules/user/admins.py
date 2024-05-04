@@ -38,6 +38,8 @@ from pyrogram import Client, filters
 from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import ChatPermissions, ChatPrivileges, Message
 
+from config import SUDO_USERS
+
 from config import CMD_HANDLER
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
@@ -54,8 +56,9 @@ unmute_permissions = ChatPermissions(
 )
 
 
+
 @Client.on_message(
-    filters.group & filters.command(["setchatphoto", "setgpic"], cmd) & filters.me
+    filters.command(["setchatphoto", "setgpic"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def set_chat_photo(client: Client, message: Message):
     X = (await client.get_chat_member(message.chat.id, client.me.id)).privileges
@@ -74,9 +77,8 @@ async def set_chat_photo(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.group & filters.command("cban", ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command(["ban", "cban"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
-@Client.on_message(filters.group & filters.command("ban", cmd) & filters.me)
 async def member_ban(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     Man = await edit_or_reply(message, "`Currently Process...`")
@@ -111,8 +113,9 @@ async def member_ban(client: Client, message: Message):
     await Man.edit(msg)
 
 
-@Client.on_message(filters.command("cunban", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.group & filters.command("unban", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["unban", "cunban"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def member_unban(client: Client, message: Message):
     reply = message.reply_to_message
     Man = await edit_or_reply(message, "`In progresss...`")
@@ -134,11 +137,9 @@ async def member_unban(client: Client, message: Message):
     umention = (await client.get_users(user)).mention
     await Man.edit(f"Unbanned! {umention}")
 
-
 @Client.on_message(
-    filters.command(["cpin", "cunpin"], ["."]) & filters.user(DEVS) & ~filters.me
+    filters.command(["pin", "unpin", "cpin", "cunpin"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
-@Client.on_message(filters.command(["pin", "unpin"], cmd) & filters.me)
 async def pin_message(client: Client, message):
     if not message.reply_to_message:
         return await edit_or_reply(message, "Reply to a message to pin/unpin it.")
@@ -159,9 +160,9 @@ async def pin_message(client: Client, message):
         disable_web_page_preview=True,
     )
 
-
-@Client.on_message(filters.command(["cmute"], ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command("mute", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["mute", "cmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def mute(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message)
     Man = await edit_or_reply(message, "`Processing...`")
@@ -186,9 +187,9 @@ async def mute(client: Client, message: Message):
     await message.chat.restrict_member(user_id, permissions=ChatPermissions())
     await Man.edit(msg)
 
-
-@Client.on_message(filters.command(["cunmute"], ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.group & filters.command("unmute", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["cunmute", "unmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def unmute(client: Client, message: Message):
     user_id = await extract_user(message)
     Man = await edit_or_reply(message, "`Processing...`")
@@ -201,8 +202,9 @@ async def unmute(client: Client, message: Message):
     umention = (await client.get_users(user_id)).mention
     await Man.edit(f"Unmuted! {umention}")
 
-@Client.on_message(filters.command(["ckick", "cdkick"], ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command(["kick", "dkick"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["kick", "dkick", "ckick", "cdkick"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def kick_user(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message)
     X = await edit_or_reply(message, "`Processing...`")
@@ -233,15 +235,8 @@ async def kick_user(client: Client, message: Message):
     except ChatAdminRequired:
         return await X.edit("**Sorry You are not an admin**")
 
-
 @Client.on_message(
-    filters.group
-    & filters.command(["cpromote", "cfullpromote"], ["."])
-    & filters.user(DEVS)
-    & ~filters.me
-)
-@Client.on_message(
-    filters.group & filters.command(["promote", "fullpromote"], cmd) & filters.me
+    filters.command(["promote", "fullpromote", "cpromote", "cfullpromote"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def promotte(client: Client, message: Message):
     user_id = await extract_user(message)
@@ -285,12 +280,8 @@ async def promotte(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.group
-    & filters.command(["cdemote"], ["."])
-    & filters.user(DEVS)
-    & ~filters.me
+    filters.command(["demote", "cdemote"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
-@Client.on_message(filters.group & filters.command("demote", cmd) & filters.me)
 async def demote(client: Client, message: Message):
     user_id = await extract_user(message)
     X = await edit_or_reply(message, "`Processing...`")
