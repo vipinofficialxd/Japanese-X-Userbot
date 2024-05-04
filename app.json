@@ -12,6 +12,10 @@
       "description": "Paste your Telegram ID here",
       "required": true
     },
+    "SUDO_USERS": {
+      "description": "Paste your second Telegram ID here",
+      "required": true      
+    },
     "OWNER": {
       "description": "Your original name on Telegram",
       "required": true
@@ -31,11 +35,11 @@
     },
     "HEROKU_API_KEY": {
       "description": "Fill your Heroku API key get this from » https://dashboard.heroku.com/account",
-      "required": false
+      "required": true
     },
     "HEROKU_APP_NAME": {
       "description": "Fill your Heroku app name",
-      "required": false
+      "required": true
     },
     "MONGO_URL": {
       "description": "MONGO DB URL",
