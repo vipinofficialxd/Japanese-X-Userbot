@@ -220,7 +220,9 @@ async def give_kiss(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["lick", "lic"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["lick", "lic"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_lick(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/lick"
     async with aiohttp.ClientSession() as session:
@@ -248,7 +250,9 @@ async def give_lick(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["pat", "pats"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["pat", "pats"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_pat(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/pat"
     async with aiohttp.ClientSession() as session:
@@ -276,7 +280,9 @@ async def give_pat(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["smug", "smugs"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["smug", "smugs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_smug(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/smug"
     async with aiohttp.ClientSession() as session:
@@ -304,7 +310,9 @@ async def give_smug(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["bonk", "bonks"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["bonk", "bonks"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bonk(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/bonk"
     async with aiohttp.ClientSession() as session:
@@ -332,7 +340,9 @@ async def give_bonk(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["yeet", "yeets"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["yeet", "yeets"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_yeet(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/yeet"
     async with aiohttp.ClientSession() as session:
@@ -360,7 +370,9 @@ async def give_yeet(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["blush", "blushes"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["blush", "blushes"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_blush(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/blush"
     async with aiohttp.ClientSession() as session:
