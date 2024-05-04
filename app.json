@@ -1,52 +1,48 @@
 {
   "name": "Japanese-X-Userbot",
-  "description": "[Japanese-X-Userbot] world's largest and fastest userbot. Powered by Japanese-X-Userbot.",
+  "description": "[Japanese-X-Userbot] ᴡᴏʀʟᴅ'ꜱ ʟᴀʀɢᴇꜱᴛ ᴀɴᴅ ꜰᴀꜱᴛᴇꜱᴛ ᴜꜱᴇʀʙᴏᴛ. ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴊᴀᴘᴀɴᴇꜱᴇ-x-ᴜꜱᴇʀʙᴏᴛ.",
   "logo": "https://graph.org/file/ec99cb6dba229bd984537.jpg",
   "stack": "heroku-22",
   "env": {
     "BOT_TOKEN": {
-      "description": "Get this from BotFather",
+      "description": "ɢᴇᴛ ᴛʜɪꜱ ꜰʀᴏᴍ ʙᴏᴛꜰᴀᴛʜᴇʀ 🌿",
       "required": true
     },
     "OWNER_ID": {
-      "description": "Paste your Telegram ID here",
+      "description": "ʏᴏᴜʀ ᴏᴡɴᴇʀ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ɪᴅ ✨",
       "required": true
     },
     "SUDO_USERS": {
-      "description": "Paste your second Telegram ID here",
-      "required": true      
+      "description": "ʏᴏᴜʀ ꜱᴇᴄᴏɴᴅ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ ɪᴅ ʜᴇʀᴇ ʏᴏᴜʀ ᴏᴡɴᴇʀ ɪᴅ ʜᴇʀᴇ ɪꜰ ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴀɴʏ ꜱᴇᴄᴏɴᴅ ᴀᴄᴄᴏᴜɴᴛ 🧸",
+      "required": false      
     },
     "OWNER": {
-      "description": "Your original name on Telegram",
+      "description": "ʏᴏᴜʀ ɴᴀᴍᴇ ᴏɴ ᴛᴇʟᴇɢʀᴀᴍ 💗",
       "required": true
     },
-    "SUDO_USERS": {
-            "description": "Your Sudo User Id ",
-            "required": true
-    },
     "STRING_SESSION1": {
-      "description": "Fill your Pyrogram string session",
+      "description": "ʏᴏᴜʀ ᴘʏʀᴏɢʀᴀᴍ ꜱᴛʀɪɴɢ ꜱᴇꜱꜱɪᴏɴ 🤗",
       "required": true
     },
     "PM_PIC": {
-      "description": "Enter a Telegraph link for new DM to see",
+      "description": "ᴀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ᴏꜰ ᴀɴ ɪᴍᴀɢᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ꜱᴇᴇ ɪɴ ᴘᴍᴘᴇʀᴍɪᴛ/ᴅᴍ 💐",
       "required": false
     },
     "BOTLOG_CHAT_ID": {
-      "description": "Fill your bot log chat ID",
+      "description": "ᴀ ᴄʜᴀᴛ ɪᴅ ꜰᴏʀ ʏᴏᴜʀ ᴜꜱᴇʀʙᴏᴛ/ʙᴏᴛ ʟᴏɢꜱ 📃",
       "required": false,
       "value": "-100"
     },
     "HEROKU_API_KEY": {
-      "description": "Fill your Heroku API key get this from » https://dashboard.heroku.com/account",
+      "description": "ꜰɪʟʟ ʏᴏᴜʀ ʜᴇʀᴏᴋᴜ ᴀᴘɪ ᴋᴇʏ ɢᴇᴛ ᴛʜɪꜱ ꜰʀᴏᴍ » https://dashboard.heroku.com/account",
       "required": true
     },
     "HEROKU_APP_NAME": {
-      "description": "Fill your Heroku app name",
+      "description": "ꜰɪʟʟ ʏᴏᴜʀ ʜᴇʀᴏᴋᴜ ᴀᴘᴘ ɴᴀᴍᴇ 📛",
       "required": true
     },
     "MONGO_URL": {
-      "description": "MONGO DB URL",
+      "description": "ᴍᴏɴɢᴏ ᴅʙ ᴜʀʟ 🚀",
       "required": true
     }
   },
