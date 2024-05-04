@@ -37,7 +37,7 @@ from aiohttp.client_exceptions import ClientError
 from pyrogram import filters, Client 
 from pyrogram.types import Message
 
-
+from config import SUDO_USERS
 from X.helpers.aiohttp_helper import AioHttp
 from .help import *
 
@@ -337,7 +337,7 @@ for x in cf_api_data:
 
 
 @Client.on_message(
-    filters.command(text_api_commands, ".") & filters.me
+    filters.command(text_api_commands, ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def hentai_api(bot: Client, message: Message):
     cmd = message.command
