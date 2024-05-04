@@ -44,6 +44,7 @@ from pyrogram.types import *
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply, get_text
 from X.helpers.constants import MEMES
 
@@ -135,7 +136,9 @@ async def phase4(message):
         await asyncio.sleep(SLEEP)
 
 
-@Client.on_message(filters.command(["heart", "love"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["heart", "love"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hearts(client: Client, message: Message):
     await phase1(message)
     await asyncio.sleep(SLEEP * 3)
@@ -156,7 +159,9 @@ async def _(client: Client, message: Message):
     reply_text = NOBLE[noble]
     await edit_or_reply(message, reply_text)
 
-@Client.on_message(filters.command("hmm", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["hmm"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hello_world(client: Client, message: Message):
     mg = await edit_or_reply(
         message,
@@ -183,8 +188,10 @@ async def hello_world(client: Client, message: Message):
     await mg.edit("aahhhhhhh")
     await asyncio.sleep(0.2)
     await mg.edit("aaahhhhhhhh")
-
-@Client.on_message(filters.command("shoot", prefixes=".") & filters.me)
+    
+@Client.on_message(
+    filters.command(["shoot"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gunid(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -199,6 +206,9 @@ async def gunid(client: Client, message: Message):
     )
 
 @Client.on_message(filters.command("brain", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["brain"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def pijtau(client: Client, message: Message):
     if message.forward_from:
         return
@@ -228,6 +238,9 @@ async def pijtau(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("bomb", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["bomb"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gahite(client: Client, message: Message):
     if message.forward_from:
         return
@@ -254,6 +267,9 @@ async def gahite(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("call", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["call"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hajqag(client: Client, message: Message):
     if message.forward_from:
         return
@@ -286,6 +302,9 @@ async def hajqag(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("kill", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["kill"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gahah(client: Client, message: Message):
     if message.forward_from:
         return
@@ -314,6 +333,9 @@ async def gahah(client: Client, message: Message):
                            
 
 @Client.on_message(filters.command("theart", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["theart"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gahah(client: Client, message: Message):
     if message.forward_from:
         return
@@ -345,7 +367,10 @@ async def gahah(client: Client, message: Message):
     await asyncio.sleep(0.5)
     await message.edit("💜")
 
-@Client.on_message(filters.command("wtf", cmd) & filters.me)
+#@Client.on_message(filters.command("wtf", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["wtf"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gagahkah(client: Client, message: Message):
     if message.forward_from:
         return
@@ -365,7 +390,10 @@ async def gagahkah(client: Client, message: Message):
         await message.edit(animation_chars[i % 5])
 
 
-@Client.on_message(filters.command("ding", cmd) & filters.me)
+#@Client.on_message(filters.command("ding", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ding"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gkahgagw(client: Client, message: Message):
     animation_interval = 0.3
     animation_ttl = range(0, 30)
@@ -390,7 +418,10 @@ async def gkahgagw(client: Client, message: Message):
         await message.edit(animation_chars[i % 10])
 
 
-@Client.on_message(filters.command("hypo", cmd) & filters.me)
+#@Client.on_message(filters.command("hypo", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["hypo"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def okihakga(client: Client, message: Message):
     if message.forward_from:
         return
@@ -419,7 +450,10 @@ async def okihakga(client: Client, message: Message):
         await message.edit(animation_chars[i % 15])
 
 
-@Client.on_message(filters.command(["gangsta", "gang", "gangstar"], cmd) & filters.me)
+#@Client.on_message(filters.command(["gangsta", "gang", "gangstar"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gangsta", "gang", "gangstar"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gajjajay(client: Client, message: Message):
     await message.edit("EVERyBOdy")
     await asyncio.sleep(0.3)
@@ -438,7 +472,10 @@ async def gajjajay(client: Client, message: Message):
     await message.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥🔥🔥")
 
 
-@Client.on_message(filters.command("charging", cmd) & filters.me)
+#@Client.on_message(filters.command("charging", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["charging"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def timer_blankx(client: Client, message: Message):
     txt = (
         message.text[10:]
@@ -457,7 +494,10 @@ async def timer_blankx(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command(["cock"], cmd) & filters.me)
+#@Client.on_message(filters.command(["cock"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["cock"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def cock(client: Client, message: Message):
     e = await edit_or_reply(message, "8✊===D")
     await e.edit("8=✊==D")
@@ -491,7 +531,10 @@ async def cock(client: Client, message: Message):
     await e.edit("😭😭😭😭")
 
 
-@Client.on_message(filters.command(["fuck", "fucek"], cmd) & filters.me)
+#@Client.on_message(filters.command(["fuck", "fucek"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["fuck", "fucek"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ngefuck(client: Client, message: Message):
     e = await edit_or_reply(message, ".                       /¯ )")
     await e.edit(".                       /¯ )\n                      /¯  /")
@@ -521,7 +564,10 @@ async def ngefuck(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("hack", cmd) & filters.me)
+#@Client.on_message(filters.command("hack", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["hack"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hak(client: Client, message: Message):
     await message.edit_text("Looking for WhatsApp databases in targeted person...")
     await asyncio.sleep(2)
@@ -582,7 +628,10 @@ async def hak(client: Client, message: Message):
 
 
 
-@Client.on_message(filters.command("dino", cmd) & filters.me)
+#@Client.on_message(filters.command("dino", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["dino"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def adadino(client: Client, message: Message):
     typew = await edit_or_reply(message, "`DIN DINNN.....`")
     await asyncio.sleep(1)
@@ -643,7 +692,10 @@ async def adadino(client: Client, message: Message):
 
 
 
-@Client.on_message(filters.command(["snake"], cmd) & filters.me)
+#@Client.on_message(filters.command(["snake"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["snake"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def snake(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -759,7 +811,10 @@ async def snake(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command(["helicopter", "heli"], cmd) & filters.me)
+#@Client.on_message(filters.command(["helicopter", "heli"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["helicopter", "heli"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def helicopter(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -782,7 +837,10 @@ async def helicopter(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("gf", cmd) & filters.me)
+#@Client.on_message(filters.command("gf", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gf"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gf(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -790,7 +848,10 @@ async def gf(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("drugs", cmd) & filters.me)
+#@Client.on_message(filters.command("drugs", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["drugs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def drugs(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -813,7 +874,10 @@ async def drugs(client: Client, message: Message):
 
 
 
-@Client.on_message(filters.command(["run"], cmd) & filters.me)
+#@Client.on_message(filters.command(["run"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["run"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def run(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -825,7 +889,10 @@ async def run(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("thumb", cmd) & filters.me)
+#@Client.on_message(filters.command("thumb", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["thumb"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def thumb(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -845,7 +912,10 @@ async def thumb(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("tank", cmd) & filters.me)
+#@Client.on_message(filters.command("tank", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["tank"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tank(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -856,7 +926,10 @@ async def tank(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("cat", cmd) & filters.me)
+#@Client.on_message(filters.command("cat", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["cat"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def cat(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -871,7 +944,10 @@ async def cat(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command(["pat"], cmd) & filters.me)
+#@Client.on_message(filters.command(["pat"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["pat"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def pat(client: Client, message: Message):
     await edit_or_reply(
         message,
@@ -884,7 +960,10 @@ async def pat(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("nolove", cmd) & filters.me)
+#@Client.on_message(filters.command("nolove", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["nolove"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def nolove(client: Client, message: Message):
     typew = await edit_or_reply(
         message, "`\n(\\_/)`" "`\n(●_●)`" "`\n />💖 *This is for you`"
@@ -893,7 +972,10 @@ async def nolove(client: Client, message: Message):
     await typew.edit("`\n(\\_/)`" "`\n(●_●)`" "`\n💖<\\  *tap IB OO that one`")
 
 
-@Client.on_message(filters.command("scam", cmd) & filters.me)
+#@Client.on_message(filters.command("scam", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["scam"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def scam(client: Client, message: Message):
     typew = await edit_or_reply(message, "`Activates Witchcraft Commands Online....`")
     await asyncio.sleep(2)
@@ -1204,7 +1286,10 @@ async def scam(client: Client, message: Message):
     await asyncio.sleep(1)
     await typew.edit("**Target Successfully Scammed Online 🥴**")
 
-@Client.on_message(filters.command(["ror", "ah"], cmd) & filters.me)
+#@Client.on_message(filters.command(["ror", "ah"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ror", "ah"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def hearts(client: Client, message: Message):
     await phase1(message)
     await asyncio.sleep(SLEEP * 1.5)
