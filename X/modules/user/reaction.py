@@ -790,7 +790,9 @@ async def give_dance(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["cringe", "cringeg"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["cringe", "cringeg"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_cringe(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/cringe"
     async with aiohttp.ClientSession() as session:
