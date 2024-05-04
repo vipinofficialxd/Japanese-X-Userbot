@@ -610,7 +610,9 @@ async def give_nom(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["wink", "winks"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["wink", "winks"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_wink(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/wink"
     async with aiohttp.ClientSession() as session:
@@ -638,7 +640,9 @@ async def give_wink(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["happy", "happys"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["happy", "happys"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_happy(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/happy"
     async with aiohttp.ClientSession() as session:
