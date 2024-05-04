@@ -38,7 +38,7 @@ from .help import *
 
 
 @Client.on_message(
-    filters.command(["screenshot", "ss"], ".") & filters.private & filters.me
+    filters.command(["ss"], ".") & filters.private & filters.me
 )
 async def screenshot(bot: Client, message: Message):
     await asyncio.gather(
@@ -57,7 +57,7 @@ add_command_help(
     "•─╼⃝𖠁 ꜱᴄʀᴇᴇɴꜱʜᴏᴛ",
     [
         [
-            ".screenshot",
+            ".ss",
             "Sᴇɴᴅ ᴀ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ ᴀ ᴘʀɪᴠᴀᴛᴇ ᴄʜᴀᴛ (ɴᴏᴛ ꜱᴇᴄʀᴇᴛ) ᴛᴏ ᴀɴɴᴏʏ ᴏʀ ᴛʀᴏʟʟ ʏᴏᴜʀ ғʀɪᴇɴᴅꜱ.",
         ],
     ],
