@@ -400,7 +400,9 @@ async def give_blush(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["smile", "smiles"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["smile", "smiles"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_smile(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/smile"
     async with aiohttp.ClientSession() as session:
@@ -428,7 +430,9 @@ async def give_smile(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["waves", "wave"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["waves", "wave"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_wave(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/wave"
     async with aiohttp.ClientSession() as session:
@@ -456,7 +460,9 @@ async def give_wave(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["handhold", "hh"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["handhold", "hh"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_handhold(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/handhold"
     async with aiohttp.ClientSession() as session:
@@ -484,7 +490,9 @@ async def give_handhold(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["highfive", "hf"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["highfive", "hf"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_highfive(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/highfive"
     async with aiohttp.ClientSession() as session:
@@ -512,7 +520,9 @@ async def give_highfive(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["glomp", "glomps"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["glomp", "glomps"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_glomp(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/glomp"
     async with aiohttp.ClientSession() as session:
@@ -540,7 +550,9 @@ async def give_glomp(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["bites", "bite"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["bites", "bite"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bite(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/bite"
     async with aiohttp.ClientSession() as session:
@@ -568,7 +580,9 @@ async def give_bite(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["nom", "noms"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["nom", "noms"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_nom(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/nom"
     async with aiohttp.ClientSession() as session:
