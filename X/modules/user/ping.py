@@ -42,6 +42,7 @@ from pyrogram.raw import functions
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from config import BOT_VER, BRANCH as brch
 from X import CMD_HELP, StartTime
 from X.helpers.basic import edit_or_reply
@@ -89,7 +90,9 @@ def testspeed(m, _):
         return m.edit_text(f"<code>{e}</code>")
     return result
     
-@Client.on_message(filters.command(["speed", "speedtest"], CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["speedtest"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def speedtest_function(client, message: Message):
     _ = get_localization("en")
     m = await message.reply_text(_["server_11"])
@@ -114,7 +117,9 @@ async def speedtest_function(client, message: Message):
         
 
 
-@Client.on_message(filters.command("dc", CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["dc"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def nearest_dc(client: Client, message: Message):
     dc = await client.send(functions.help.GetNearestDc())
     await edit_or_reply(
@@ -125,7 +130,9 @@ async def nearest_dc(client: Client, message: Message):
 @Client.on_message(
     filters.command("Cpink", [""]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command("ping", CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["ping"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def pingme(client: Client, message: Message):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -139,7 +146,9 @@ async def pingme(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("Cping", [""]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command("pink", CMD_HANDLER) & filters.me)
+@Client.on_message(
+    filters.command(["pink"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def pink(client: Client, message: Message):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -159,8 +168,10 @@ async def pink(client: Client, message: Message):
 @Client.on_message(
     filters.command("Ceping", [""]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command("pong", CMD_HANDLER) & filters.me)
-async def uputt(client: Client, message: Message):
+@Client.on_message(
+    filters.command(["pong"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
+async def X(client: Client, message: Message):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
     xx = await edit_or_reply(message, "DEAR COCOKIN")
