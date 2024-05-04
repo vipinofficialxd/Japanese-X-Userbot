@@ -39,7 +39,9 @@ from X.helpers.PyroHelpers import GetChatID, ReplyCheck
 from .help import *
 
 
-@Client.on_message(filters.command(["bully", "bullys"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["bully", "bullys"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/bully"
     async with aiohttp.ClientSession() as session:
