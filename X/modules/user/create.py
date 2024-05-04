@@ -38,12 +38,15 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 
 from .help import *
 
 
-@Client.on_message(filters.command("create", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["create"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def create(client: Client, message: Message):
     if len(message.command) < 3:
         return await edit_or_reply(
