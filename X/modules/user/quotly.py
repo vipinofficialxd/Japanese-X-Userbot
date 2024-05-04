@@ -39,12 +39,15 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.tools import get_arg
 
 from .help import *
 
 
-@Client.on_message(filters.me & filters.command(["q", "quotly"], cmd))
+@Client.on_message(
+    filters.command(["q"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def quotly(client: Client, message: Message):
     args = get_arg(message)
     if not message.reply_to_message and not args:
