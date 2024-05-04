@@ -20,6 +20,10 @@
       "description": "Your original name on Telegram",
       "required": true
     },
+    "SUDO_USERS": {
+            "description": "Your Sudo User Id ",
+            "required": true
+    },
     "STRING_SESSION1": {
       "description": "Fill your Pyrogram string session",
       "required": true
