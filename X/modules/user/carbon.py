@@ -41,6 +41,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X import aiosession
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
@@ -56,7 +57,9 @@ async def make_carbon(code):
     return image
 
 
-@Client.on_message(filters.command("carbon", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["carbon"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def carbon_func(client: Client, message: Message):
     text = (
         message.text.split(None, 1)[1]
