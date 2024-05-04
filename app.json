@@ -29,7 +29,7 @@
       "required": false
     },
     "BOTLOG_CHAT_ID": {
-      "description": "ᴀ ᴄʜᴀᴛ ɪᴅ ꜰᴏʀ ʏᴏᴜʀ ᴜꜱᴇʀʙᴏᴛ/ʙᴏᴛ ʟᴏɢꜱ 📃",
+      "description": "ᴅᴏɴ'ᴛ ᴄʜᴀɴɢᴇ ᴛʜɪꜱ 📃",
       "required": false,
       "value": "-100"
     },
