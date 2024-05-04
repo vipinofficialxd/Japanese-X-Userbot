@@ -39,7 +39,7 @@ import os
 
 from pyrogram import *
 from pyrogram.types import *
-
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 from X.helpers.basic import edit_or_reply, get_text, get_user
 
@@ -49,7 +49,9 @@ OWNER = os.environ.get("OWNER", None)
 BIO = os.environ.get("BIO", "𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄-𝐗-𝐔𝐒𝐄𝐑𝐁𝐎𝐓")
 
 
-@Client.on_message(filters.command("clone", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["clone"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def clone(client: Client, message: Message):
     text = get_text(message)
     op = await edit_or_reply(message, "`Cloning`")
@@ -73,7 +75,9 @@ async def clone(client: Client, message: Message):
     await message.edit(f"**From now I'm** __{f_name}__")
 
 
-@Client.on_message(filters.command("revert", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["revert"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def revert(client: Client, message: Message):
     await message.edit("`Reverting`")
     r_bio = BIO
