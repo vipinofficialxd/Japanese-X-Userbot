@@ -41,13 +41,16 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.PyroHelpers import ReplyCheck
 
 from .help import *
 
 
-@Client.on_message(filters.command(["asupan", "ptl"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["asupan", "ptl"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def asupan_cmd(client: Client, message: Message):
     X = await edit_or_reply(message, "`Wait More Search for Lu's Intake...`")
     await gather(
@@ -66,7 +69,9 @@ async def asupan_cmd(client: Client, message: Message):
         ),
     )
 
-@Client.on_message(filters.command(["bkp"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["bkp"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def bkp_cmd(client: Client, message: Message):
     X = await edit_or_reply(message, "`Wait More Find Bra Material For Lu..`")
     await gather(
@@ -90,7 +95,9 @@ async def bkp_cmd(client: Client, message: Message):
 
 
 
-@Client.on_message(filters.command(["ayang"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ayang"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ayang(client, message):
     yanto = await message.reply("🔎 `Search Is...`")
     pop = message.from_user.first_name
@@ -111,7 +118,9 @@ async def ayang(client, message):
     await yanto.delete()
 
 
-@Client.on_message(filters.command(["ppcp", "couple"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ppcp", "couple"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ppcp(client, message):
     yanto = await message.reply("🔎 `Search PP Couple...`")
     message.from_user.first_name
@@ -132,7 +141,9 @@ async def ppcp(client, message):
     await yanto.delete()
 
 
-@Client.on_message(filters.command(["ppanime"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["ppanime"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def ppanime(client, message):
     yanto = await message.reply("🔎 `Search PP Anime...`")
     message.from_user.first_name
