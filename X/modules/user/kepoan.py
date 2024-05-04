@@ -40,13 +40,16 @@ from pyrogram.types import *
 from pyrogram import filters
 from pyrogram.raw.functions.messages import DeleteHistory
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X import *
 
 from .help import *
 
 
-@Client.on_message(filters.me & filters.command("copy", cmd))
+@Client.on_message(
+    filters.command(["copy"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def _(client, message):
     if len(message.command) < 2:
         return
@@ -72,7 +75,9 @@ async def _(client, message):
     return await client.send(DeleteHistory(peer=user_info, max_id=0, revoke=True))
 
 
-@Client.on_message(filters.command(["curi"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["curi"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def pencuri(client, message):
     dia = message.reply_to_message
     me = client.me.id
