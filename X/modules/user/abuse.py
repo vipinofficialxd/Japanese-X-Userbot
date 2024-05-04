@@ -32,11 +32,14 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from XDB.data import MASTERS, ABUSE
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 from .help import *
 import asyncio
 
-@Client.on_message(filters.command("abuse", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["abuse"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def abuse(x: Client, e: Message):
     NOBI = "".join(e.text.split(maxsplit=1)[1:]).split(" ", 2)
 
