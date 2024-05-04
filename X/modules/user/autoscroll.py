@@ -22,6 +22,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from .help import *
 
@@ -36,7 +37,9 @@ async def auto_read(bot: Client, message: Message):
     message.continue_propagation()
 
 
-@Client.on_message(filters.command("autoscroll", ".") & filters.me)
+@Client.on_message(
+    filters.command(["autoscroll"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def add_to_auto_read(bot: Client, message: Message):
     if message.chat.id in f:
         f.remove(message.chat.id)
