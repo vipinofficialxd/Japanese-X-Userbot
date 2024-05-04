@@ -33,6 +33,7 @@ import asyncio
 import aiohttp
 from pyrogram import filters, Client
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 
 from X.helpers.PyroHelpers import GetChatID, ReplyCheck
@@ -69,7 +70,9 @@ async def give_bully(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["cuddle", "cuddles"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["cuddle", "cuddles"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_cuddle(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/cuddle"
     async with aiohttp.ClientSession() as session:
@@ -97,7 +100,9 @@ async def give_cuddle(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["cry", "cries"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["cry", "cries"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_cry(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/cry"
     async with aiohttp.ClientSession() as session:
@@ -125,7 +130,9 @@ async def give_cry(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["hug", "hugs"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["hug", "hugs"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_hug(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/hug"
     async with aiohttp.ClientSession() as session:
@@ -153,7 +160,9 @@ async def give_hug(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["awoo", "awoos"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["awoo", "awoos"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_awoo(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/awoo"
     async with aiohttp.ClientSession() as session:
@@ -181,7 +190,9 @@ async def give_awoo(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["kiss", "ki"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["kiss", "ki"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_kiss(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/kiss"
     async with aiohttp.ClientSession() as session:
