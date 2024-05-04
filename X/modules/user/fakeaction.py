@@ -41,6 +41,7 @@ from pyrogram.raw import functions
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.PyroHelpers import ReplyCheck
 
 from .help import *
@@ -61,7 +62,9 @@ commands = {
 }
 
 
-@Client.on_message(filters.command(list(commands), cmd) & filters.me)
+@Client.on_message(
+    filters.command(list(commands), ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fakeactions_handler(client: Client, message: Message):
     cmd = message.command[0]
     try:
