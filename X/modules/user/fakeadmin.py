@@ -32,6 +32,7 @@ import random
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X import *
 from X.helpers.adminHelpers import DEVS
 from X.utils.misc import extract_user_and_reason
@@ -66,7 +67,9 @@ babi = [
 @Client.on_message(
     filters.command(["fgban"], ".") & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["fgban"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["fgban"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fgban(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -100,7 +103,9 @@ async def fgban(client: Client, message: Message):
 @Client.on_message(
     filters.command("fgmute", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["fgmute"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["fgmute"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fgmute(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -134,7 +139,9 @@ async def fgmute(client: Client, message: Message):
 @Client.on_message(
     filters.command("fgkick", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["fgkick"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["fgkick"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fgkick(client: Client, message: Message):
     user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     if message.from_user.id != client.me.id:
@@ -169,7 +176,9 @@ async def fgkick(client: Client, message: Message):
 @Client.on_message(
     filters.command("fgcast", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["fgcast"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["fgcast"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def fgcast(client: Client, message: Message):
     if message.reply_to_message or get_arg(message):
         tex = await message.reply_text("`Started global broadcast...`")
