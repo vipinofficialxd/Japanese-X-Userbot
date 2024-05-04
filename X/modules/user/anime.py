@@ -218,7 +218,9 @@ async def give_bully(bot: Client, message: Message):
                     caption=caption
                 ),
             )
-@Client.on_message(filters.command(["gamecg"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["gamecg"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/gamecg"
     async with aiohttp.ClientSession() as session:
@@ -246,7 +248,9 @@ async def give_bully(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["hololive"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["hololive"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/hololive"
     async with aiohttp.ClientSession() as session:
@@ -274,7 +278,9 @@ async def give_bully(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["uncensored"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["uncensored"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/uncensored"
     async with aiohttp.ClientSession() as session:
@@ -302,7 +308,9 @@ async def give_bully(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["sunglasses"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["sunglasses"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_bully(bot: Client, message: Message):
     URL = "https://fantox-apis.vercel.app/sunglasses"
     async with aiohttp.ClientSession() as session:
