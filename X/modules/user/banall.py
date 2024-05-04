@@ -31,11 +31,14 @@
 
 from pyrogram import Client, filters
 from config import OWNER_ID
+from config import SUDO_USERS
 from config import CMD_HANDLER as cmd
 
 from .help import *
 
-@Client.on_message(filters.command("banall", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["banall"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def banall(client, message):
     if not message.from_user:
         return
