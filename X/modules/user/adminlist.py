@@ -40,12 +40,15 @@ from pyrogram import Client, enums, filters
 from pyrogram.types import Message
 
 from config import CMD_HANDLER
+from config import SUDO_USERS
 from X.helpers.basic import edit_or_reply
 from X.helpers.parser import mention_html, mention_markdown
 from .help import *
 
 
-@Client.on_message(filters.me & filters.command(["admins", "adminlist"], cmd))
+@Client.on_message(
+    filters.command(["admins"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def adminlist(client: Client, message: Message):
     replyid = None
     toolong = False
@@ -108,7 +111,9 @@ async def adminlist(client: Client, message: Message):
         await message.edit(teks)
 
 
-@Client.on_message(filters.command(["kickdel", "zombies"], cmd) & filters.me)
+@Client.on_message(
+    filters.command(["zombies"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def kickdel_cmd(client: Client, message: Message):
     Man = await edit_or_reply(message, "<b>𝐊𝐢𝐜𝐤𝐢𝐧𝐠 𝐝𝐞𝐥𝐞𝐭𝐞𝐝 𝐚𝐜𝐜𝐨𝐮𝐧𝐭𝐬...</b>")
     # noinspection PyTypeChecker
@@ -121,7 +126,7 @@ async def kickdel_cmd(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.me & filters.command(["reportadmin", "reportadmins", "report"], cmd)
+    filters.command(["report"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def report_admin(client: Client, message: Message):
     await message.delete()
@@ -169,13 +174,15 @@ async def report_admin(client: Client, message: Message):
         )
 
 
-@Client.on_message(filters.me & filters.command(["everyone", "tagall"], cmd))
+@Client.on_message(
+    filters.command(["tagall"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def tag_all_users(client: Client, message: Message):
     await message.delete()
     if len(message.text.split()) >= 2:
         text = message.text.split(None, 1)[1]
     else:
-        text = "𝐇𝐢 𝐚𝐥𝐥 😊"
+        text = "𝐇𝐞𝐥𝐥𝐨 𝐉𝐀𝐏𝐀𝐍𝐄𝐒𝐄 𝐒𝐀𝐌𝐔𝐑𝐀𝐈'𝐒 😊"
     kek = client.get_chat_members(message.chat.id)
     async for a in kek:
         if not a.user.is_bot:
@@ -193,7 +200,9 @@ async def tag_all_users(client: Client, message: Message):
         )
 
 
-@Client.on_message(filters.me & filters.command(["botlist", "bots"], cmd))
+@Client.on_message(
+    filters.command(["bots"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def get_list_bots(client: Client, message: Message):
     replyid = None
     if len(message.text.split()) >= 2:
@@ -230,13 +239,13 @@ add_command_help(
     "•─╼⃝𖠁 ᴛᴀɢ",
     [
         [f"{cmd}admins", "Gᴇᴛ Cʜᴀᴛꜱ ᴀᴅᴍɪɴ ʟɪꜱᴛ ."],
-        [f"{cmd}kickdel", "Tᴏ ᴋɪᴄᴋ ᴅᴇʟᴇᴛᴇᴅ Aᴄᴄᴏᴜɴᴛ ."],
+        [f"{cmd}zombies", "Tᴏ ᴋɪᴄᴋ ᴅᴇʟᴇᴛᴇᴅ Aᴄᴄᴏᴜɴᴛ ."],
         [
             f"{cmd}everyone `or` {cmd}tagall",
             "Tᴏ ᴍᴇɴᴛɪᴏɴ ᴇᴠᴇʀʏᴏɴᴇ",
         ],
         [
-            f"{cmd}botlist",
+            f"{cmd}bots",
             "ᴛᴏ ɢᴇᴛ ᴄʜᴀᴛꜱ ʙᴏᴛ ʟɪꜱᴛ",
         ],
     ],
