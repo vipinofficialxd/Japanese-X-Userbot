@@ -670,7 +670,9 @@ async def give_happy(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["kill", "kills"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["kill", "kills"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_kill(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/kill"
     async with aiohttp.ClientSession() as session:
@@ -698,7 +700,9 @@ async def give_kill(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["slap", "slaps"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["slap", "slaps"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_slap(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/slap"
     async with aiohttp.ClientSession() as session:
@@ -726,7 +730,9 @@ async def give_slap(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["poke", "pokes"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["poke", "pokes"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_poke(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/poke"
     async with aiohttp.ClientSession() as session:
@@ -754,7 +760,9 @@ async def give_poke(bot: Client, message: Message):
                 ),
             )
 
-@Client.on_message(filters.command(["dance", "dances"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["dance", "dances"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def give_dance(bot: Client, message: Message):
     URL = "https://api.waifu.pics/sfw/dance"
     async with aiohttp.ClientSession() as session:
