@@ -76,3 +76,5 @@ async def executor(client: Client, message: Message):
         evaluation = "𝚂𝚄𝙲𝙲𝙴𝚂𝚂"
     final_output = f"**𝙾𝚄𝚃𝙿𝚄𝚃**:\n```{evaluation.strip()}```"
     await edit_or_reply(message, final_output) 
+
+
