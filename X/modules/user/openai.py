@@ -64,7 +64,7 @@ async def openai(client: Client, message: Message):
     msg = await message.reply("`Be patient..")
 
     for endpoint in API_ENDPOINTS:
-        url = endpoint.format(question=quote(question))
+        url = endpoint.format(question=model(question))
         
         try:
             response = requests.get(url).json()
