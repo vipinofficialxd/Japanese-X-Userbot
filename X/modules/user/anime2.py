@@ -39,13 +39,16 @@ import requests
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from config import CMD_HANDLER as cmd
+from config import SUDO_USERS
 
 from .help import * 
 
 API_URL = "https://api.nekosapi.com/v3/images/15"
 
 
-@Client.on_message(filters.command("anime2", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["anime2"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def anime2(client: Client, message: Message):
     # Send the "Processing..." message
     await message.edit("Fetching a random anime image...")
