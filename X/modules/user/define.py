@@ -24,12 +24,15 @@ import asyncio
 
 from pyrogram import filters, Client
 from pyrogram.types import Message
+from config import SUDO_USERS
 
 from X.helpers.aiohttp_helper import AioHttp
 from .help import *
 
 
-@Client.on_message(filters.command(["define", "dict"], ".") & filters.me)
+@Client.on_message(
+    filters.command(["define"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def define(bot: Client, message: Message):
     cmd = message.command
 
