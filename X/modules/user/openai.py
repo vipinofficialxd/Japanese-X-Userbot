@@ -48,35 +48,22 @@ import random
 
 from .help import *
 
-API_ENDPOINTS = [
-    "https://tofu-api.onrender.com/chat/{model}/{prompt}",
-]
 
 @Client.on_message(
     filters.command(["ai"], ".") & (filters.me | filters.user(SUDO_USERS))
 )
 async def openai(client: Client, message: Message):
-    if len(message.command) == 1:
-        return await message.reply(f"Ketik <code>.{message.command[0]} [question]</code> Questions for use OpenAI")
-    
-    question = message.text.split(" ", maxsplit=1)[1]
-    
-    msg = await message.reply("`Be patient..")
-
-    for endpoint in API_ENDPOINTS:
-        url = endpoint.format(question=model(question))
-        
-        try:
-            response = requests.get(url).json()
-            await msg.edit(response["answer"])
-            break
-        except MessageNotModified:
-            pass
-        except Exception:
-            continue
-
+    def chat_with_api(model, prompt):
+    url = f"https://tofu-api.onrender.com/chat/{model}/{prompt}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        if data["code"] == 2:
+            return data["content"]
+        else:
+            return "Error: Unable to get response from the API"
     else:
-        await msg.edit("Sorry, ChatGPT is currently unavailable. Please try again later.")
+        return "Error: Unable to connect to the API"
 
 add_command_help(
     "•─╼⃝𖠁 ᴏᴘᴇɴᴀɪ",
