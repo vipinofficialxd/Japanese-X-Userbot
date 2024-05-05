@@ -6,8 +6,6 @@ from config import HEROKU_APP_NAME, HEROKU_API_KEY
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-ok = []
-
 @Client.on_message(
     filters.command(["addsudo"], ".") & (filters.me | filters.user(OWNER_ID))
 )
