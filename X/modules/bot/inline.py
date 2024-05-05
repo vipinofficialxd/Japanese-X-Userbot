@@ -121,7 +121,7 @@ async def pingme(client: Client, message: Message):
 async def peler_function(message: Message, answers):
     msg = (
         f"Japanese-X-Userbot \n"
-        "ㅤㅤStatus : Ubot Active \n"
+        "ㅤㅤStatus : Japanese-X-Userbot Active \n"
         f"ㅤㅤㅤㅤModules:</b> <code>{len(modules)} Modules</code> \n"
         f"ㅤㅤㅤㅤBot Version: {BOT_VER} \n"
         f"ㅤㅤㅤㅤBranch: {branch} \n\n"
