@@ -9,7 +9,7 @@ from pyrogram.types import Message
 ok = []
 
 @Client.on_message(
-    filters.command(["addsudo"], ".") & (filters.me | filters.user(SUDO_USERS))
+    filters.command(["addsudo"], ".") & (filters.me | filters.user(OWNER_ID))
 )
 async def add_sudo(_, message: Message):
        if not message.reply_to_message:
