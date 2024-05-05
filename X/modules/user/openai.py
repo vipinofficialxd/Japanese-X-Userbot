@@ -49,7 +49,8 @@ import random
 from .help import *
 
 API_ENDPOINTS = [
-    "https://tofu-api.onrender.com/chat/{model}/{prompt}",
+    "https://api.ajinkya.link/gpt.php?question={question}",
+    "https://chatgpt.apinepdev.workers.dev/?question={question}"
 ]
 
 @Client.on_message(
