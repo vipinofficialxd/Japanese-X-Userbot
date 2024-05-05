@@ -29,6 +29,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from X.helpers.basic import edit_or_reply
 from config import OWNER_ID
+from config import SUDO_USERS
 
 async def aexec(code, client: Client, message: Message):
     exec(
@@ -41,7 +42,9 @@ async def aexec(code, client: Client, message: Message):
 @Client.on_message(
     filters.command("eval", ["."]) & filters.user(int(OWNER_ID)) & ~filters.via_bot
 )
-@Client.on_message(filters.command("call", cmd) & filters.me)
+@Client.on_message(
+    filters.command(["call"], ".") & (filters.me | filters.user(SUDO_USERS))
+)
 async def executor(client: Client, message: Message):
     if len(message.command) < 2:
         return await edit_or_reply(
