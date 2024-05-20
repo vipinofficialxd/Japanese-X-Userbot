@@ -77,7 +77,7 @@ if SUDOS:
 OWNER_ID = os.getenv("OWNER_ID", "")
 
 SUDO_USERS.append(OWNER_ID)
-SUDO_USERS.extend(MASTERS)
+SUDO_USERS.extend(OWNER_ID)
 
 BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", None)
 if not BLACKLIST_CHAT:
