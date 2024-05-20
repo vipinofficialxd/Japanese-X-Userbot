@@ -20,9 +20,9 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 
-#kexx (⌯ Kᴜɴᴀʟ࿐ 🕊)
+#kexx (⌯ VIPIN࿐ 🕊)
 
-MASTERS = [6694740726]
+MASTERS = [6144223366]
 
 RAID = [
 "𝐦𝐚𝐝𝐚𝐫𝐜𝐡𝐨𝐝 𝐭𝐞𝐫𝐢 𝐦𝐚𝐚 𝐤𝐢 𝐜𝐡𝐮𝐭 𝐦𝐞 𝐠𝐡𝐮𝐭𝐤𝐚 𝐤𝐡𝐚𝐚𝐤𝐞 𝐭𝐡𝐨𝐨𝐤 𝐝𝐮𝐧𝐠𝐚 🤣🤣",
